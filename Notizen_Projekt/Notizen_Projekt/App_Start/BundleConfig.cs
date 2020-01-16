@@ -20,15 +20,17 @@ namespace Notizen_Projekt
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/semanticUi").Include(
-                      "~/Scripts/semantic.min.js"));
+                      "~/Scripts/semantic.min.js",
+                      "~/Scripts/jquery.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/semantic.min.js"));
+                      "~/Scripts/boodstrap.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/semantic.min.css"));
+                      //"~/Content/bootstrap.css",
+                      "~/Content/semantic.min.css",
+                      "~/Content/site.css"
+                      ));
         }
     }
 }

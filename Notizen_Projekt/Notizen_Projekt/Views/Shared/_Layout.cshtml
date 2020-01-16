@@ -4,26 +4,23 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Meine ASP.NET-Anwendung</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/semanticUi")
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
 </head>
 <body>
     <div id="container">
-        <header>Kopfbereich</header>
+        <mainNav id="container">
+            @Html.Partial("MainNavigation")
+        </mainNav>
+        <sideNav>
+            @Html.Partial("SideNavigation")
+        </sideNav>
         <main>
-            <nav>
-                Navigation
-            </nav>
-            <content>
-                @RenderBody()
-            </content>
-            <aside>Seitenbereich</aside>
+            @RenderBody()
         </main>
-        <footer>
-            Fußbereich
-        </footer>
     </div>
 
 
