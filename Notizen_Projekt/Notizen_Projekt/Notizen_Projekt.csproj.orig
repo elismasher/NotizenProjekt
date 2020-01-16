@@ -166,12 +166,15 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Shared\SideNavigation.cshtml" />
+    <Content Include="Views\Shared\MainNavigation.cshtml" />
+=======
     <Content Include="Views\Shared\Navigation.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Registration.cshtml" />
-    <Content Include="Views\Shared\SideNavigation.cshtml" />
-    <Content Include="Views\Shared\MainNavigation.cshtml" />
+>>>>>>> 63e5238f259cc3e6a26a1fd649fe89c1b17dac12
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
