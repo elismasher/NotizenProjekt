@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Notizen_Projekt.Models
 {
-    enum Gender
+    public enum Gender
     {
         male, female, notSpecified
     }
@@ -39,7 +39,7 @@ namespace Notizen_Projekt.Models
 
         public User() :this(0,"","","",Gender.notSpecified,"",""){}
 
-        public User(int id, string username, string firstname, string lastname,Gender gender, string password, string passwordConfirm)
+        public User(int id, string username, string firstname, string lastname, Gender gender, string password, string passwordConfirm)
         {
             this.ID = id;
             this.Username = username;
