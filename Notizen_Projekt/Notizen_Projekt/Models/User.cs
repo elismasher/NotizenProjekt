@@ -51,6 +51,5 @@ namespace Notizen_Projekt.Models
         }
 
 
-
     }
 }
