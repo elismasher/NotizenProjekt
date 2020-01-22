@@ -11,23 +11,28 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
 </head>
 <body>
-    <div id="container">
-        <mainNav id="container">
-            @Html.Partial("MainNavigation")
-        </mainNav>
-        <sideNav>
-            @Html.Partial("SideNavigation")
-        </sideNav>
-        <main>
-            @RenderBody()
-        </main>
-    </div>
+        <div class="ui secondary menu" id="topNav">
+        @Html.Partial("TopNavigation")
+        </div>
+
+        <div class="ui grid">
+            <div class="three wide column" id="gridItem">
+                <div class="ui secondary vertical pointing menu" id="sideNav">
+                    @Html.Partial("SideNavigation")
+                </div>
+            </div>
+
+            <div class="thirteen wide column" id="gridItem">
+                <main>
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
 
 
 
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 </body>
 </html>
