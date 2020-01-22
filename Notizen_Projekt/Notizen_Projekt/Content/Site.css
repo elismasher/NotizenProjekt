@@ -12,11 +12,18 @@
     border-bottom-color: lightgrey;
 }
 
+#topNav i{
+    color:white;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 50px;
+}
 #topNav a{
     color:white;
+    background-color: transparent;
 }
 #topNav a:hover{
-    color: grey;
+    color: gray;
     background-color: white;
 }
 
