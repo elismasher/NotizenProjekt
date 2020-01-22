@@ -16,6 +16,8 @@ namespace Notizen_Projekt.Models
 
         public Message() : this("","",""){}
 
+        public Message(string header, string messageText) : this(header,messageText, "") { }
+
         public Message(string header,string messageText, string solution)
         {
             this.Header = header;
