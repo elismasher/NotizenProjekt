@@ -2,42 +2,53 @@
 
 @{
     ViewBag.Title = "Login";
- }
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
 
-<h2>Login</h2>
 
 @using (Html.BeginForm())
 {
-<table>
-    <thead>
-        <tr>
-            <td colspan="2">Login</td>
-        </tr>
-    </thead>
-    <tbody>
-
-        <tr>
-            <td>@Html.LabelFor(u => u.Username, "Benutzername: ")</td>
-            <td>@Html.TextBoxFor(u => u.Username, new { required = "required" })</td>
-        </tr>
-
-        <tr>
-            <td>@Html.LabelFor(u => u.Password, "Passwort: ")</td>
-            <td>@Html.TextBoxFor(u => u.Password, new { required = "required" })</td>
-        </tr>
-
-        <tr>
-            <td colspan="2" style="text-align:center">
-                <input type="submit" value="Login" id="btnSubmit" />
-                <input type="reset" value="Abbrechen" id="btnReset" />
-            </td>
-        </tr>
-
-    </tbody>
-</table>
 
 
+    <form class="ui form">
 
+            <div class="field">
+                <label>E-Mail</label>
+                @Html.TextBoxFor(u => u.Username, new { required = "required", type = "email", name = "email", placeholder = "E-Mail" })
+            </div>
+
+            <div class="field">
+                <label>Passwort</label>
+                @Html.TextBoxFor(u => u.Password, new { required = "required", type = "password", name = "password", placeholder = "Passwort", @class = "password" })
+            </div>
+
+            <div class="field">
+                <label>First Name</label>
+                <input type="email" name="email" placeholder="First Name">
+            </div>
+
+            <button class="ui button" type="submit">Sign In</button>
+        <button class="ui button" type="button">Sign Up</button>
+
+    </form>
+
+    <form class="ui form">
+        <div class="field">
+            <label>First Name</label>
+            <input type="email" name="email" placeholder="First Name">
+        </div>
+        <div class="field">
+            <label>Last Name</label>
+            <input type="Password" name="Password" placeholder="Last Name">
+        </div>
+        <div class="field">
+            <div class="ui checkbox">
+                <input type="checkbox" tabindex="0" class="hidden">
+                <label>I agree to the Terms and Conditions</label>
+            </div>
+        </div>
+        <button class="ui button" type="submit">Submit</button>
+    </form>
 
 }
 

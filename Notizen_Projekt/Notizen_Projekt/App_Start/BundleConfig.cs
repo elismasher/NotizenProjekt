@@ -21,7 +21,7 @@ namespace Notizen_Projekt
 
             bundles.Add(new ScriptBundle("~/bundles/semanticUi").Include(
                       "~/Scripts/semantic.min.js",
-                      "~/Scripts/jquery.min.js"));
+                      "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/boodstrap.min.js"));
