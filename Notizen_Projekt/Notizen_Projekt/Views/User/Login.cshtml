@@ -6,15 +6,12 @@
 }
 
 
-@using (Html.BeginForm())
-{
-
-
-    <form class="ui form">
-
+    <div class="boxForm">
+        <h2>Log-in</h2>
+        <form class="ui form">
             <div class="field">
                 <label>E-Mail</label>
-                @Html.TextBoxFor(u => u.Username, new { required = "required", type = "email", name = "email", placeholder = "E-Mail" })
+                @Html.TextBoxFor(u => u.Email, new { required = "required", type = "email", name = "email", placeholder = "E-Mail" })
             </div>
 
             <div class="field">
@@ -22,34 +19,12 @@
                 @Html.TextBoxFor(u => u.Password, new { required = "required", type = "password", name = "password", placeholder = "Passwort", @class = "password" })
             </div>
 
-            <div class="field">
-                <label>First Name</label>
-                <input type="email" name="email" placeholder="First Name">
-            </div>
-
             <button class="ui button" type="submit">Sign In</button>
-        <button class="ui button" type="button">Sign Up</button>
+            <button class="ui button" type="button">Sign Up</button>
 
-    </form>
+        </form>
+    </div>
+   
 
-    <form class="ui form">
-        <div class="field">
-            <label>First Name</label>
-            <input type="email" name="email" placeholder="First Name">
-        </div>
-        <div class="field">
-            <label>Last Name</label>
-            <input type="Password" name="Password" placeholder="Last Name">
-        </div>
-        <div class="field">
-            <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>I agree to the Terms and Conditions</label>
-            </div>
-        </div>
-        <button class="ui button" type="submit">Submit</button>
-    </form>
-
-}
 
 

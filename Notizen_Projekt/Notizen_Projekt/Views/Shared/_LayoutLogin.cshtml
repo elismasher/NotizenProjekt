@@ -8,13 +8,17 @@
     @Styles.Render("~/Content/Login.css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/semanticUi")
+    @Scripts.Render("~/bundles/login")
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
 </head>
 <body>
 
 
-
-    @RenderBody()
+    <div id="gradient"/>
+    <div id="mittig">
+        @RenderBody()
+    </div>
+    
 
 
 

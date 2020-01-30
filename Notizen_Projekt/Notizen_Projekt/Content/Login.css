@@ -1,1 +1,28 @@
-﻿
+﻿body {
+    background-color: #000000;
+    padding: 0px;
+    margin: 0px;
+}
+
+#gradient {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+#mittig {
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.boxForm{
+    padding: 30px 40px;
+    background-color: white;
+    border-radius: 20px;
+}

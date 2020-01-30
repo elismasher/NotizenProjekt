@@ -26,6 +26,9 @@ namespace Notizen_Projekt
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/boodstrap.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/login").Include(
+                      "~/Scripts/background-script.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       //"~/Content/bootstrap.css",
                       "~/Content/semantic.min.css",
