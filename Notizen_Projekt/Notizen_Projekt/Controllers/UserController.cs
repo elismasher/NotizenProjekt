@@ -35,6 +35,7 @@ namespace Notizen_Projekt.Controllers
             }
 
             CheckUserData(user);
+            
 
             if (!ModelState.IsValid)
             {
@@ -77,6 +78,17 @@ namespace Notizen_Projekt.Controllers
                 ModelState.AddModelError("PasswordConfirm", "Es muss 2mal das gleiche Passwort eingegeben werden.");
             }
 
+            if (!EmailContainsAddSign(user.Email, 1))
+            {
+                ModelState.AddModelError("Email", "Email muss @ Zeichen enthalten.");
+            }
+
+            if (!EmailContainsAddSign(user.Email, 1))
+            {
+                ModelState.AddModelError("Email", "Email muss . Zeichen enthalten.");
+            }
+
+
         }
 
         private bool CheckPassword(string password)
@@ -117,6 +129,37 @@ namespace Notizen_Projekt.Controllers
             foreach (char c in text)
             {
                 if (char.IsNumber(c))
+                {
+                    count++;
+                }
+            }
+            return count >= minCount;
+        }
+
+
+        private bool EmailContainsAddSign(string text, int minCount)
+        {
+            string allowedChars = "@";
+            int count = 0;
+            foreach (char c in text)
+            {
+                
+                if (allowedChars.Contains(c))
+                {
+                    count++;
+                }
+            }
+            return count >= minCount;
+        }
+
+        private bool EmailContainsDot(string text, int minCount)
+        {
+            string allowedChars = ".";
+            int count = 0;
+            foreach (char c in text)
+            {
+
+                if (allowedChars.Contains(c))
                 {
                     count++;
                 }

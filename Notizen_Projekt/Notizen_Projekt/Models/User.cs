@@ -33,19 +33,22 @@ namespace Notizen_Projekt.Models
 
         public Gender Gender { get; set; }
 
+        public string Email { get; set; }
+
         public string Password { get; set; }
 
         public string PasswordConfirm { get; set; }
 
-        public User() :this(0,"","","",Gender.notSpecified,"",""){}
+        public User() :this(0,"","","",Gender.notSpecified,"","",""){}
 
-        public User(int id, string username, string firstname, string lastname, Gender gender, string password, string passwordConfirm)
+        public User(int id, string username, string firstname, string lastname, Gender gender, string email, string password, string passwordConfirm)
         {
             this.ID = id;
             this.Username = username;
             this.Firstname = firstname;
             this.Lastname = lastname;
             this.Gender = gender;
+            this.Email = email;
             this.Password = password;
             this.PasswordConfirm = passwordConfirm;
         }
