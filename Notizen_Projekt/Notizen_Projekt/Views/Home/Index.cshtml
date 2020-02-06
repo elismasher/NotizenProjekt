@@ -1,5 +1,15 @@
-﻿@{
+﻿@model List<Notizen_Projekt.Models.Note>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <p>NotizenProjekt</p>
+<p>hier Partial für Notizen design</p>
+
+<div class="ui three column grid">
+    @foreach (var note in Model)
+    {
+        <div class="column">@Html.Partial("Note", note)</div>
+    }
+</div>

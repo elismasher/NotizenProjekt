@@ -10,6 +10,7 @@ namespace Notizen_Projekt.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
 
