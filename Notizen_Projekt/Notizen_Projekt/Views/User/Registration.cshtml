@@ -2,67 +2,71 @@
 
 @{
     ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 
-<h2>Registration</h2>
+    
 
 
-@using (Html.BeginForm())
-{
-    <p>
-        @Html.ValidationSummary()
-    </p>
+    <div class="boxForm">
+        <h2>Sign Up</h2>
+        <form class="ui form">
+            <div class="field">
+                <label>Vorname</label>
+                @Html.TextBoxFor(u => u.Firstname, new { required = "required", type = "text", name = "first-name", placeholder = "Vorname" })
+            </div>
 
-    <table>
-        <thead>
-            <tr>
-                <td colspan="2">Registrierung</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>@Html.LabelFor(u => u.Firstname, "Vorname:* ")</td>
-                <td>@Html.TextBoxFor(u => u.Firstname, new { required = "required" }) </td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(u => u.Lastname, "Nachname:* ")</td>
-                <td>@Html.TextBoxFor(u => u.Lastname, new { required = "required" }) </td>
-            </tr>
+            <div class="field">
+                <label>Nachname</label>
+                @Html.TextBoxFor(u => u.Lastname, new { required = "required", type = "text", name = "last-name", placeholder = "Nachname" })
+            </div>
 
-            <tr>
-                <td>@Html.LabelFor(u => u.Gender, "Geschlecht: ")</td>
-                <td>@Html.EnumDropDownListFor(u => u.Gender, new { required = "required" })</td>
-            </tr>
+            <div class="field">
+                <label>Geschlecht</label>
+                <select class="ui dropdown" onchange="this.className=this.options[this.selectedIndex].className">
+                    <option class="blackText" value="" disabled selected hidden>Geschlecht</option>
+                    <option class="blackText" value="1">Männlich</option>
+                    <option class="blackText" value="0">Weiblich</option>
+                </select>
+            </div>
 
-            <tr>
-                <td>@Html.LabelFor(u => u.Username, "Benutzername:* ")</td>
-                <td>@Html.TextBoxFor(u => u.Username, new { required = "required" })</td>
-            </tr>
+            <div class="field">
+                <label>E-Mail</label>
+                @Html.TextBoxFor(u => u.Email, new { required = "required", type = "email", name = "email", placeholder = "E-Mail", @id="email"})
+            </div>
 
-            <tr>
-                <td>@Html.LabelFor(u => u.Password, "Passwort:* ")</td>
-                <td>@Html.PasswordFor(u => u.Password, new { required = "required" })</td>
-            </tr>
+            <div class="field">
+                <label>Benutzername</label>
+                @Html.TextBoxFor(u => u.Username, new { required = "required", type = "text", name = "username", placeholder = "Benutzername" })
+            </div>
 
-            <tr>
-                <td>@Html.LabelFor(u => u.PasswordConfirm, "Passwort bestätigen:* ")</td>
-                <td>@Html.PasswordFor(u => u.PasswordConfirm, new { required = "required" })</td>
-            </tr>
+            <div class="field">
+                <label>Passwort</label>
+                @Html.TextBoxFor(u => u.Password, new { required = "required", type = "password", name = "password", placeholder = "Passwort", @id = "password" })
+            </div>
 
+            <div class="field">
+                <label>Passwort bestätigen</label>
+                @Html.TextBoxFor(u => u.PasswordConfirm, new { required = "required", type = "password", name = "password-confirm", placeholder = "Passwort bestätigen", @id = "confirm_password" })
+                <span id='message'></span>
+            </div>
 
-            <tr>
-                <td colspan="2" style=" text-align:center">
-                    <input type="submit" value="Regitrieren" id="btnSubmit" />
-                    <input type="reset" value="Abbrechen" id="btnReset" />
-                </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="2">* sind Pflichtfelder</td>
-            </tr>
-        </tfoot>
+            <a href="~/User/Login" class="ui button" type="button">Sign In</a>
+            <button class="ui button" type="submit">Sign Up</button>
+
+        </form>
+    </div>
 
 
-    </table>
-}
+
+
+<script>
+    $('#password, #confirm_password').on('keyup', function () {
+        if ($('#password').val() == $('#confirm_password').val()) {
+            $('#message').html('Passwörter stimmen überein').css('color', 'green');
+        } else 
+        $('#message').html('Passwörter stimmen nicht überein').css('color', 'red');
+    });
+</script>
+
+
