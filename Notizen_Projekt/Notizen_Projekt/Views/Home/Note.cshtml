@@ -1,6 +1,19 @@
 ﻿@model Notizen_Projekt.Models.Note
 
 
-<div class="note">
+<div class="noteBlock" style="background-color: @Model.ColourNote">
+    <h3>@Model.NoteTitle</h3>
     <p>@Model.NoteText</p>
+
+    <div class="bottomSection">
+        <div class="textBlock">
+            <p>@Model.User</p>
+        </div>
+        <div class="textBlock">
+            <p>@Model.DateWritten</p>
+        </div>
+        <div class="textBlock">
+            <p>@Model.ColourNote</p>
+        </div>
+    </div>
 </div>

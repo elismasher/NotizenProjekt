@@ -10,6 +10,11 @@ namespace Notizen_Projekt.Models
         privateN, publicN, friendsN, notSpecified 
     }
 
+    public enum ColourNote
+    {
+        blue, red, yellow, green, grey, white, notSpecified
+    }
+
     public class Note
     {
         private string _user;
@@ -26,6 +31,7 @@ namespace Notizen_Projekt.Models
             }
         }
 
+        public string NoteTitle { get; set; }
         public string NoteText { get; set; }
 
         public DateTime DateWritten { get; set; }
@@ -33,16 +39,22 @@ namespace Notizen_Projekt.Models
         public DateTime DateLastEdit { get; set; }
 
         public Status Status { get; set; }
+        public ColourNote ColourNote { get; set; }
 
-        public Note() : this("", "",DateTime.Now,DateTime.Now,Status.notSpecified) { }
 
-        public Note(string user,string noteText, DateTime dateWritten, DateTime dateLastEdit, Status status)
+
+
+        public Note() : this("", "", "",DateTime.Now,DateTime.Now,Status.notSpecified, ColourNote.notSpecified) { }
+
+        public Note(string user,string noteTitle, string noteText, DateTime dateWritten, DateTime dateLastEdit, Status status, ColourNote colourNote)
         {
             this.User = user;
+            this.NoteTitle = noteTitle;
             this.NoteText = noteText;
             this.DateWritten = dateWritten;
             this.DateLastEdit = dateLastEdit;
             this.Status = status;
+            this.ColourNote = colourNote;
         }
 
     }

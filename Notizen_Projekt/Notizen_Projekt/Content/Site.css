@@ -1,4 +1,4 @@
-﻿body{
+﻿body {
     margin: 0;
     padding: 0;
 }
@@ -53,6 +53,16 @@ main {
     padding: 15px 20px;
 }
 
-.note{
+.noteBlock{
     background-color: white;
+    padding: 1.5em;
+    border-radius: 1em;
+}
+
+.bottomSection{
+    text-align: right;
+}
+
+.textBlock{
+    float:right;
 }
