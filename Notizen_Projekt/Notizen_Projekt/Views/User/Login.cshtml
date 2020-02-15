@@ -7,7 +7,10 @@
 
 
     <div class="boxForm">
-        <h2>Sign In</h2>
+        <div id="horizontalMittig">
+            <h2>Sign In</h2>
+            <br />
+        </div>
         <form class="ui form">
             <div class="field">
                 <label>E-Mail</label>
@@ -19,12 +22,20 @@
                 @Html.TextBoxFor(u => u.Password, new { required = "required", type = "password", name = "password", placeholder = "Passwort", @class = "password" })
             </div>
 
-            <button class="ui button" type="submit">Sign In</button>
-            <a href="~/User/Registration" class="ui button" type="button">Sign Up</a>
+            <br />
+
+            <div id="horizontalMittig">
+                <div class="ui buttons">
+                    <button class="ui positive button">Sign In</button>
+                    <div class="or"></div>
+                    <a href="~/User/Registration" class="ui button">Sign Up</a>
+                </div>
+                </div>
+
 
         </form>
-    </div>
-   
+        </div>
+
 
 
 

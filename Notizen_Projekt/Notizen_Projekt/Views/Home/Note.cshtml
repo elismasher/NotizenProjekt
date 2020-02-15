@@ -1,19 +1,24 @@
 ﻿@model Notizen_Projekt.Models.Note
 
+        <div class="noteBlock" style="border-color: @Model.ColourNote">
+            <h3>@Model.NoteTitle</h3>
+            <p>@Model.NoteText</p>
 
-<div class="noteBlock" style="background-color: @Model.ColourNote">
-    <h3>@Model.NoteTitle</h3>
-    <p>@Model.NoteText</p>
+            <div class="bottomSection">
+                    <!--View-->
+                    <div class="textBlock" id="right">
+                        <a href="#@Model.User@Model.Id"><i class="search plus icon"></i></a>
+                    </div>
+                    <!--User-->
+                    <div class="textBlock" id="right">
+                        <p>@Model.User</p>
+                    </div>
 
-    <div class="bottomSection">
-        <div class="textBlock">
-            <p>@Model.User</p>
+                    <!-- Date -->
+                    <div class="textBlock" id="left">
+                        <p>@Model.DateWritten</p>
+                    </div>
+            </div>
         </div>
-        <div class="textBlock">
-            <p>@Model.DateWritten</p>
-        </div>
-        <div class="textBlock">
-            <p>@Model.ColourNote</p>
-        </div>
-    </div>
-</div>
+
+

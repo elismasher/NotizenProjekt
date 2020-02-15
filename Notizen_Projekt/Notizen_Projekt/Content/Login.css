@@ -21,7 +21,11 @@
     transform: translateY(-50%);
 }
 
-.boxForm{
+#horizontalMittig{
+    text-align:center;
+}
+
+.boxForm {
     padding: 30px 40px;
     background-color: white;
     border-radius: 20px;
