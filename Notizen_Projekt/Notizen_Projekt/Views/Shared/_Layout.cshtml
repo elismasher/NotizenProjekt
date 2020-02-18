@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
 </head>
 <body>
-        <div class="ui secondary menu" id="topNav">
+        <div class="ui secondary menu fixed" id="topNav">
         @Html.Partial("TopNavigation")
         </div>
 
-        <div class="ui grid">
+        <div class="ui grid" id="fullHeight">
             <div class="three wide column" id="gridItem">
                 <div class="ui secondary vertical pointing menu" id="sideNav">
                     @Html.Partial("SideNavigation")

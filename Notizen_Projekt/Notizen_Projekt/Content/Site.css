@@ -1,4 +1,5 @@
 ﻿body {
+    height: 100%;
     margin: 0;
     padding: 0;
 }
@@ -12,22 +13,22 @@
     border-bottom-color: lightgrey;
 }
 
-    #topNav i {
-        color: white;
-        padding-top: 20px;
-        padding-left: 30px;
-        padding-right: 50px;
-    }
+#topNav i {
+    color: white;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 50px;
+}
 
-    #topNav a {
-        color: white;
-        background-color: transparent;
-    }
+#topNav a {
+    color: white;
+    background-color: transparent;
+}
 
-        #topNav a:hover {
-            color: gray;
-            background-color: white;
-        }
+#topNav a:hover {
+    color: gray;
+    background-color: white;
+}
 
 #sideNav {
     margin: 0;
@@ -35,11 +36,12 @@
     background-color: white;
     height: 100%;
     width: 100%;
+    padding-top: 20px;
 }
 
-    #sideNav a {
-        padding-left: 30px;
-    }
+#sideNav a {
+    padding-left: 30px;
+}
 
 #gridItem {
     margin: 0;
@@ -47,12 +49,21 @@
     padding: 0;
 }
 
+#fullHeight {
+    height: 100%;
+    left: 0;
+    top: 0;
+    margin: 0;
+}
+
 main {
     margin: 0;
-    padding: 0;
-    background-color: rgb(240,240,240);
+    background-color: rgb(240, 240, 240);
     width: 100%;
-    padding: 15px 20px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding: 25px 20px;
 }
 
 /*Notiz einzeln*/
@@ -73,12 +84,15 @@ main {
     border-color: #ebebeb;
     text-align: right;
 }
-#right{
-    float:right;
+
+#right {
+    float: right;
 }
-#left{
-    float:left;
+
+#left {
+    float: left;
 }
+
 .textBlock {
     margin-left: 8px;
 }
@@ -97,7 +111,7 @@ main {
     pointer-events: none;
     transition: all 0.3s;
 
-    
+
 }
 
 .modal-window:target {
@@ -106,29 +120,29 @@ main {
     pointer-events: auto;
 }
 
-    .modal-window > div {
-        max-width: 500px;
-        width: 80%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 1.5em;
-        background: #ffffff;
-        border-radius: 1em;
-        border-top: solid;
-        border-top-width: 8px;
-        border-color: lightgrey;
-    }
+.modal-window > div {
+    max-width: 500px;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1.5em;
+    background: #ffffff;
+    border-radius: 1em;
+    border-top: solid;
+    border-top-width: 8px;
+    border-color: lightgrey;
+}
 
-    .modal-window header {
-        font-weight: bold;
-    }
+.modal-window header {
+    font-weight: bold;
+}
 
-    .modal-window h1 {
-        font-size: 150%;
-        margin: 0 0 15px;
-    }
+.modal-window h1 {
+    font-size: 150%;
+    margin: 0 0 15px;
+}
 
 .modal-close {
     color: #aaa;
@@ -147,6 +161,3 @@ main {
 .modal-close:hover {
     color: black;
 }
-
-
-
