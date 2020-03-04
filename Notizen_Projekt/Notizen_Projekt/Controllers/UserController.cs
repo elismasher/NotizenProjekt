@@ -5,11 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using Notizen_Projekt.Models;
 
+using Notizen_Projekt.Models;
+using Notizen_Projekt.Models.db;
+
 namespace Notizen_Projekt.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
+        private IRepositoryUser rep;
+
         public ActionResult Index()
         {
             return View();
@@ -29,22 +33,32 @@ namespace Notizen_Projekt.Controllers
         [HttpPost]
         public ActionResult Registration(User user)
         {
-            if(user == null)
+            if (user == null)
             {
                 return RedirectToAction("Registration");
             }
 
             CheckUserData(user);
-            
 
             if (!ModelState.IsValid)
             {
                 return View(user);
             }
-
             else
             {
-                return View("Message", new Message("Registrierung", "Registrierung erfolgreich"));
+                rep = new RepositoryUser();
+
+                rep.Open();
+                if (rep.Insert(user))
+                {
+                    rep.Close();
+                    return View("Message", new Message("Registrierung", "Ihre Daten wurde erfolgreich abgespeichert!"));
+                }
+                else
+                {
+                    rep.Close();
+                    return View("Message", new Message("Registrierung", "Ihre Daten konnten nicht abgespeichert werden!"));
+                }
             }
         }
 
@@ -135,7 +149,6 @@ namespace Notizen_Projekt.Controllers
             }
             return count >= minCount;
         }
-
 
         private bool EmailContainsAddSign(string text, int minCount)
         {
