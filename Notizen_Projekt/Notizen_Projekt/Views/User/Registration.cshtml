@@ -12,8 +12,9 @@
         <div id="horizontalMittig">
             <h2>Sign Up</h2>
             <br />
-         </div>
-            <form class="ui form">
+            <span style="color: red;">@Html.ValidationSummary()</span>
+        </div>
+            <form class="ui form" action="/user/registration" method="post">
                 <div class="field">
                     <label>Vorname</label>
                     @Html.TextBoxFor(u => u.Firstname, new { required = "required", type = "text", name = "first-name", placeholder = "Vorname" })
@@ -26,10 +27,10 @@
 
                 <div class="field">
                     <label>Geschlecht</label>
-                    <select class="ui dropdown" onchange="this.className=this.options[this.selectedIndex].className">
+                    <select class="ui dropdown" id="Gender" name="Gender" onchange="this.className=this.options[this.selectedIndex].className">
                         <option class="blackText" value="" disabled selected hidden>Geschlecht</option>
-                        <option class="blackText" value="1">Männlich</option>
-                        <option class="blackText" value="0">Weiblich</option>
+                        <option class="blackText" value="0">Männlich</option>
+                        <option class="blackText" value="1">Weiblich</option>
                     </select>
                 </div>
 

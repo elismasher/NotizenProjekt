@@ -138,7 +138,7 @@ namespace Notizen_Projekt.Controllers
 
         private bool CheckPassword(string password)
         {
-            if (password.Length >= 8)
+            if (password.Length < 8)
             {
                 return false;
             }
