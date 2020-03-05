@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Notizen_Projekt.Models.db
+namespace Notizen_Projekt.Models
 {
     public class UserLogin
     {

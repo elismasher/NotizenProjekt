@@ -20,7 +20,39 @@ namespace Notizen_Projekt.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            return View(new UserLogin());
+        }
+
+        [HttpPost]
+        public ActionResult Login(UserLogin user)
+        {
+            User userFromDB;
+
+            rep = new RepositoryUser();
+            rep.Open();
+            userFromDB = rep.Login(user);
+            rep.Close();
+
+            if (userFromDB == null)
+            {
+                ModelState.AddModelError("Username", "Benutzername oder Passwort stimmen nicht überein!");
+                return View(user);
+            }
+            else
+            {
+                Session["loggedinUser"] = userFromDB;
+                return RedirectToAction("index", "home");
+            }
+        }
+
+        public ActionResult Logout()
+        {
+            if (Session["loggedinUser"] != null)
+            {
+                Session["loggedinUser"] = null;
+            }
+
+            return RedirectToAction("login", "user");
         }
 
         [HttpGet]
