@@ -209,6 +209,7 @@
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Home\Note.cshtml" />
     <Content Include="Views\Home\NoteModal.cshtml" />
+    <Content Include="Views\Shared\Message.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
