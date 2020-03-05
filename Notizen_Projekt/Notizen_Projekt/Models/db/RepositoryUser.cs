@@ -1,18 +1,17 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
+using System.Web;
 
 namespace Notizen_Projekt.Models.db
 {
     public class RepositoryUser : IRepositoryUser
     {
         //hier eigenen Login verwenden (für Datenbank)
-        private string _connectionString = "Server=localhost; Database=db_einfuehrung; Uid=root; Pwd=Klexi2408;";
+        private string _connectionString = "Server=localhost; Database=db_einfuehrung; Uid=root; Pwd=formel1;";
         private MySqlConnection _connection;
 
         public void Open()

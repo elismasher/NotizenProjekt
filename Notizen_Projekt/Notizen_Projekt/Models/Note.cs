@@ -42,12 +42,12 @@ namespace Notizen_Projekt.Models
         public ColourNote ColourNote { get; set; }
         public int Id { get; set; }
 
+        public string Tag { get; set; }
 
 
+        public Note() : this("", "", "",DateTime.Now,DateTime.Now,Status.notSpecified, ColourNote.notSpecified, 0,"") { }
 
-        public Note() : this("", "", "",DateTime.Now,DateTime.Now,Status.notSpecified, ColourNote.notSpecified, 0) { }
-
-        public Note(string user,string noteTitle, string noteText, DateTime dateWritten, DateTime dateLastEdit, Status status, ColourNote colourNote, int id)
+        public Note(string user,string noteTitle, string noteText, DateTime dateWritten, DateTime dateLastEdit, Status status, ColourNote colourNote, int id, string tag)
         {
             this.User = user;
             this.NoteTitle = noteTitle;
@@ -57,6 +57,7 @@ namespace Notizen_Projekt.Models
             this.Status = status;
             this.ColourNote = colourNote;
             this.Id = id;
+            this.Tag = tag;
         }
 
     }

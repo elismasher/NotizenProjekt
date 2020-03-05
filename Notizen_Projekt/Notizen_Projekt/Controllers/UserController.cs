@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using Notizen_Projekt.Models;
 
-using Notizen_Projekt.Models;
 using Notizen_Projekt.Models.db;
 
 namespace Notizen_Projekt.Controllers
