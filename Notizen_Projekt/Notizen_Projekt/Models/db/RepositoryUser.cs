@@ -12,7 +12,7 @@ namespace Notizen_Projekt.Models.db
     public class RepositoryUser : IRepositoryUser
     {
         //hier eigenen Login verwenden (für Datenbank)
-        private string _connectionString = "Server=localhost; Database=db_einfuehrung; Uid=root; Pwd=Klexi2408;";
+        private string _connectionString = "Server=localhost; Database=db_daten; Uid=root; Pwd=Klexi2408;";
         private MySqlConnection _connection;
 
         public void Open()
@@ -43,7 +43,7 @@ namespace Notizen_Projekt.Models.db
             }
 
             DbCommand cmdInsert = this._connection.CreateCommand();
-            cmdInsert.CommandText = "INSERT INTO users VALUES(null, @firstname, @lastname,@email, @gender, @username, sha2(@password, 256))";
+            cmdInsert.CommandText = "INSERT INTO usersNotizenProjekt VALUES(null, @firstname, @lastname,@email, @gender, @username, sha2(@password, 256))";
 
             DbParameter paramFirstname = cmdInsert.CreateParameter();
             paramFirstname.ParameterName = "firstname";
@@ -90,7 +90,7 @@ namespace Notizen_Projekt.Models.db
         public bool Delete(int id)
         {
             DbCommand cmdDel = this._connection.CreateCommand();
-            cmdDel.CommandText = "DELETE FROM users WHERE id=@userId";
+            cmdDel.CommandText = "DELETE FROM usersNotizenProjekt WHERE id=@userId";
 
             DbParameter paramId = cmdDel.CreateParameter();
             paramId.ParameterName = "userId";
@@ -105,7 +105,7 @@ namespace Notizen_Projekt.Models.db
         public User GetUser(int id)
         {
             DbCommand cmdGetUser = this._connection.CreateCommand();
-            cmdGetUser.CommandText = "SELECT * FROM users WHERE id=@uid";
+            cmdGetUser.CommandText = "SELECT * FROM usersNotizenProjekt WHERE id=@uid";
 
             DbParameter paramId = cmdGetUser.CreateParameter();
             paramId.ParameterName = "uid";
@@ -138,7 +138,7 @@ namespace Notizen_Projekt.Models.db
         public User Login(UserLogin user)
         {
             DbCommand cmdLogin = this._connection.CreateCommand();
-            cmdLogin.CommandText = "SELECT * FROM users WHERE username=@username AND password=sha2(@password, 256)";
+            cmdLogin.CommandText = "SELECT * FROM usersNotizenProjekt WHERE username=@username AND password=sha2(@password, 256)";
 
             DbParameter paramUsername = cmdLogin.CreateParameter();
             paramUsername.ParameterName = "username";
@@ -178,7 +178,7 @@ namespace Notizen_Projekt.Models.db
         public bool UpdateUserData(int id, User newUserData)
         {
             DbCommand cmdUpdate = this._connection.CreateCommand();
-            cmdUpdate.CommandText = "UPDATE users SET firstname=@firstname, lastname=@lastname, email=@email, gender=@gender, username=@username, password=sha2(@password, 256) WHERE id=@uId";
+            cmdUpdate.CommandText = "UPDATE usersNotizenProjekt SET firstname=@firstname, lastname=@lastname, email=@email, gender=@gender, username=@username, password=sha2(@password, 256) WHERE id=@uId";
 
             DbParameter paramId = cmdUpdate.CreateParameter();
             paramId.ParameterName = "uId";

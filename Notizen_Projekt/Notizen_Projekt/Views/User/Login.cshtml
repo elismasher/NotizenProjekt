@@ -14,7 +14,7 @@
             <br />
             <span style="color: red;">@Html.ValidationSummary()</span>
         </div>
-        <form class="ui form">
+        <form class="ui form" action="/User/Login" method="post">
             <div class="field">
                 <label>Username</label>
                 @Html.TextBoxFor(u => u.Username, new { required = "required", type = "text", name = "username", placeholder = "Username" })
@@ -26,8 +26,6 @@
             </div>
 
             <br />
-            <input type="submit" value="login" />
-            <input type="reset" value="abbrechen" />
 
 
 

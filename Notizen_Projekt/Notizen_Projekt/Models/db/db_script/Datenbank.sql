@@ -1,7 +1,7 @@
 create database if not exists db_daten collate utf8mb4_general_ci;
 use db_daten;
 
-create table users(
+create table usersNotizenProjekt(
 	id int not null auto_increment,
     firstname varchar(100) null,
     lastname varchar(100) not null,
@@ -13,6 +13,6 @@ create table users(
     constraint id_PK primary key(id)
 )engine=InnoDB;
 
-INSERT INTO users VALUES(null, "David", "Holzhammer", "holzi@gmail.com", 0, "holzi2", sha2("Passwort1234", 256));
+INSERT INTO usersNotizenProjekt VALUES(null, "David", "Holzhammer", "holzi@gmail.com", 0, "holzi2", sha2("Passwort1234", 256));
 
-select * from users;
+select * from usersNotizenProjekt;
