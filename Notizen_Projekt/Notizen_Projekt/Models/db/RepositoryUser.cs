@@ -11,7 +11,7 @@ namespace Notizen_Projekt.Models.db
     public class RepositoryUser : IRepositoryUser
     {
         //hier eigenen Login verwenden (für Datenbank)
-        private string _connectionString = "Server=localhost; Database=db_daten; Uid=root; Pwd=Klexi2408;";
+        private string _connectionString = "Server=localhost; Database=db_NotizenProjekt; Uid=root; Pwd=Klexi2408;";
         private MySqlConnection _connection;
 
         public void Open()
