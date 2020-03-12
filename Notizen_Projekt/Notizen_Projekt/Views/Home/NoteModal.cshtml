@@ -22,6 +22,17 @@
                 <div class="textBlock" id="left">
                     <p>@Model.DateWritten</p>
                 </div>
+                <!-- Tags -->
+                
+                <div class="textBlock" id="left">
+                    <p>
+                        Tags:
+                        @foreach (var tag in Model.Tag)
+                        {
+                            <b>@tag ,</b>
+                        }
+                    </p>
+                </div>
             </div>    
         </div>
     </div>

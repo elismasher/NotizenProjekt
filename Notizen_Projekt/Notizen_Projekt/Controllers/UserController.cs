@@ -95,7 +95,7 @@ namespace Notizen_Projekt.Controllers
 
         private void CheckUserData(User user)
         {
-            if(user == null)
+            if (user == null)
             {
                 return;
             }
@@ -133,7 +133,6 @@ namespace Notizen_Projekt.Controllers
                 ModelState.AddModelError("Email", "Email muss . Zeichen enthalten.");
             }
 
-
         }
 
         private bool CheckPassword(string password)
@@ -153,18 +152,19 @@ namespace Notizen_Projekt.Controllers
             }
 
             return true;
-        }   
+        }
 
        private bool PWContainsUppercaseCharacter(string text,int minCount)
        {
                int count = 0;
-               foreach(char c in text)
+               foreach (char c in text)
                 {
                     if (char.IsUpper(c))
                     {
                         count++;
                     }
                 }
+
            return count >= minCount;
        }
 
@@ -187,12 +187,12 @@ namespace Notizen_Projekt.Controllers
             int count = 0;
             foreach (char c in text)
             {
-                
                 if (allowedChars.Contains(c))
                 {
                     count++;
                 }
             }
+
             return count >= minCount;
         }
 
@@ -210,8 +210,5 @@ namespace Notizen_Projekt.Controllers
             }
             return count >= minCount;
         }
-
-
-
     }
 }

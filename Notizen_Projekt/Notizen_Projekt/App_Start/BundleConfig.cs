@@ -30,7 +30,7 @@ namespace Notizen_Projekt
                       "~/Scripts/background-script.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      //"~/Content/bootstrap.css",
+                      // "~/Content/bootstrap.css",
                       "~/Content/semantic.min.css",
                       "~/Content/site.css"
                       ));

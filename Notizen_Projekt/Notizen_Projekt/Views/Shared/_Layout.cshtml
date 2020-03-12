@@ -24,15 +24,14 @@
 
             <div class="thirteen wide column" id="gridItem">
                 <main>
-                    @RenderBody()
+                          @RenderBody()
                 </main>
             </div>
         </div>
 
 
-
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+                @Scripts.Render("~/bundles/jquery")
+                @Scripts.Render("~/bundles/bootstrap")
+                @RenderSection("scripts", required: false)
 </body>
 </html>

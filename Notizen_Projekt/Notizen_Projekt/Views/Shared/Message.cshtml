@@ -9,13 +9,9 @@
     {
         <h2>@Model.Header</h2>
     }
-    if (!string.IsNullOrEmpty(Model.AdditionalHeader.Trim()))
+    if (!string.IsNullOrEmpty(Model.Messagetext.Trim()))
     {
-        <h3>@Model.AdditionalHeader</h3>
-    }
-    if (!string.IsNullOrEmpty(Model.MessageText.Trim()))
-    {
-        <p>@Model.MessageText</p>
+        <p>@Model.Messagetext</p>
     }
     if (!string.IsNullOrEmpty(Model.Solution.Trim()))
     {

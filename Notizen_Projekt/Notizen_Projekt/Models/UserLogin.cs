@@ -17,6 +17,6 @@ namespace Notizen_Projekt.Models
             this.Password = password;
         }
 
-        //ToString()
+        // ToString()
     }
 }

@@ -10,7 +10,7 @@ namespace Notizen_Projekt.Models.db
 {
     public class RepositoryUser : IRepositoryUser
     {
-        //hier eigenen Login verwenden (für Datenbank)
+        // hier eigenen Login verwenden (für Datenbank)
         private string _connectionString = "Server=localhost; Database=db_einfuehrung; Uid=root; Pwd=formel1;";
         private MySqlConnection _connection;
 
@@ -54,7 +54,6 @@ namespace Notizen_Projekt.Models.db
             paramLastname.Value = user.Lastname;
             paramLastname.DbType = DbType.String;
 
-
             DbParameter paramEmail = cmdInsert.CreateParameter();
             paramEmail.ParameterName = "email";
             paramEmail.Value = user.Email;
@@ -75,7 +74,7 @@ namespace Notizen_Projekt.Models.db
             paramPassword.Value = user.Password;
             paramPassword.DbType = DbType.String;
 
-            //Parameter mit dem Command verbinden
+            // Parameter mit dem Command verbinden
             cmdInsert.Parameters.Add(paramFirstname);
             cmdInsert.Parameters.Add(paramLastname);
             cmdInsert.Parameters.Add(paramEmail);
@@ -119,6 +118,7 @@ namespace Notizen_Projekt.Models.db
                 {
                     return null;
                 }
+
                 reader.Read();
                 return new User
                 {
@@ -134,7 +134,7 @@ namespace Notizen_Projekt.Models.db
             }
         }
 
-        public User Login(UserLogin user)
+        public User Login (UserLogin user)
         {
             DbCommand cmdLogin = this._connection.CreateCommand();
             cmdLogin.CommandText = "SELECT * FROM users WHERE username=@username AND password=sha2(@password, 256)";
@@ -159,7 +159,6 @@ namespace Notizen_Projekt.Models.db
                     return null;
                 }
 
-
                 reader.Read();
                 return new User
                 {
@@ -174,7 +173,7 @@ namespace Notizen_Projekt.Models.db
             }
         }
 
-        public bool UpdateUserData(int id, User newUserData)
+        public bool UpdateUserData (int id, User newUserData)
         {
             DbCommand cmdUpdate = this._connection.CreateCommand();
             cmdUpdate.CommandText = "UPDATE users SET firstname=@firstname, lastname=@lastname, email=@email, gender=@gender, username=@username, password=sha2(@password, 256) WHERE id=@uId";

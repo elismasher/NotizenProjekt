@@ -7,7 +7,7 @@ namespace Notizen_Projekt.Models
 {
     public enum Status
     {
-        privateN, publicN, friendsN, notSpecified 
+        privateN, publicN, friendsN, notSpecified
     }
 
     public enum ColourNote
@@ -19,15 +19,15 @@ namespace Notizen_Projekt.Models
     {
         private string _user;
 
-
-        public string User 
-        { 
+        public string User
+        {
             get { return this._user; }
-            set 
-            { if (value != this._user ) 
+            set
+            {
+                if (value != this._user)
                 {
                     this._user = value;
-                } 
+                }
             }
         }
 
@@ -42,12 +42,11 @@ namespace Notizen_Projekt.Models
         public ColourNote ColourNote { get; set; }
         public int Id { get; set; }
 
-        public string Tag { get; set; }
+        public List<string> Tag { get; set; }
 
+        public Note() : this("", "", "", DateTime.Now,DateTime.Now, Status.notSpecified, ColourNote.notSpecified, 0, new List<string>()) { }
 
-        public Note() : this("", "", "",DateTime.Now,DateTime.Now,Status.notSpecified, ColourNote.notSpecified, 0,"") { }
-
-        public Note(string user,string noteTitle, string noteText, DateTime dateWritten, DateTime dateLastEdit, Status status, ColourNote colourNote, int id, string tag)
+        public Note(string user,string noteTitle, string noteText, DateTime dateWritten, DateTime dateLastEdit, Status status, ColourNote colourNote, int id, List<string> tag)
         {
             this.User = user;
             this.NoteTitle = noteTitle;

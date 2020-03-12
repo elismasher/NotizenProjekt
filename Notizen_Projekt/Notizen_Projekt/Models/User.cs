@@ -39,7 +39,7 @@ namespace Notizen_Projekt.Models
 
         public string PasswordConfirm { get; set; }
 
-        public User() :this(0,"","","",Gender.notSpecified,"","",""){}
+        public User() : this(0, "", "", "", Gender.notSpecified, "", "", ""){}
 
         public User(int id, string username, string firstname, string lastname, Gender gender, string email, string password, string passwordConfirm)
         {
@@ -52,7 +52,6 @@ namespace Notizen_Projekt.Models
             this.Password = password;
             this.PasswordConfirm = passwordConfirm;
         }
-
 
     }
 }
