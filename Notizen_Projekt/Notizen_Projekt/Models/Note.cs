@@ -7,7 +7,7 @@ namespace Notizen_Projekt.Models
 {
     public enum Status
     {
-        privateN, publicN, friendsN, notSpecified
+        privateN, publicN, friendsN
     }
 
     public enum ColourNote
@@ -44,7 +44,7 @@ namespace Notizen_Projekt.Models
 
         public List<string> Tag { get; set; }
 
-        public Note() : this("", "", "", DateTime.Now,DateTime.Now, Status.notSpecified, ColourNote.notSpecified, 0, new List<string>()) { }
+        public Note() : this("", "", "", DateTime.Now,DateTime.Now, Status.privateN, ColourNote.notSpecified, 0, new List<string>()) { }
 
         public Note(string user,string noteTitle, string noteText, DateTime dateWritten, DateTime dateLastEdit, Status status, ColourNote colourNote, int id, List<string> tag)
         {
