@@ -153,10 +153,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\db\IRepositoryNote.cs" />
     <Compile Include="Models\db\IRepositoryUser.cs" />
+    <Compile Include="Models\db\RepositoryNote.cs" />
     <Compile Include="Models\db\RepositoryUser.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Note.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

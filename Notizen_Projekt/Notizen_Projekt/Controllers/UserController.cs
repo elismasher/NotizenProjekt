@@ -93,12 +93,12 @@ namespace Notizen_Projekt.Controllers
                 if (rep.Insert(user))
                 {
                     rep.Close();
-                    return View("Message", new Message("Registrierung", "Ihre Daten wurde erfolgreich abgespeichert!"));
+                    return RedirectToAction("login", "user");
                 }
                 else
                 {
                     rep.Close();
-                    return View("Message", new Message("Registrierung", "Ihre Daten konnten nicht abgespeichert werden!"));
+                    return RedirectToAction("registration", "user");
                 }
             }
         }
