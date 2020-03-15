@@ -97,16 +97,20 @@ namespace Notizen_Projekt.Models.db
 
             bool ret = true;
 
-            foreach (var tag in tags)
+            if(tags != null)
             {
-                paramTagId.Value = tag;
-                cmd.Parameters.Clear();
-                
-                cmd.Parameters.Add(paramNodeId);
-                cmd.Parameters.Add(paramTagId);
+                foreach (var tag in tags)
+                {
+                    paramTagId.Value = tag;
+                    cmd.Parameters.Clear();
 
-                ret = ret && cmd.ExecuteNonQuery() == 1;
+                    cmd.Parameters.Add(paramNodeId);
+                    cmd.Parameters.Add(paramTagId);
+
+                    ret = ret && cmd.ExecuteNonQuery() == 1;
+                }
             }
+            
 
             return ret;
         }
@@ -164,8 +168,14 @@ namespace Notizen_Projekt.Models.db
                         }
                     );
                 }
-             return notes;
             }
+
+            foreach (var note in notes)
+            {
+                note.Tag = GetAllTagsByNoteId(note.Id);
+            }
+
+            return notes;
         }
 
         public Note GetNote(int idNote)
@@ -240,7 +250,7 @@ namespace Notizen_Projekt.Models.db
         public List<Tag> GetAllTagsByNoteId(int noteId)
         {
             DbCommand cmdGetAllTags = _connection.CreateCommand();
-            cmdGetAllTags.CommandText = "SELECT * FROM tags t JOIN NM_noteTag nT ON t.id = nT.noteId WHERE nT.idNote = @noteId;";
+            cmdGetAllTags.CommandText = "SELECT * FROM tags t JOIN NM_noteTag nT ON t.id = nT.idTag WHERE nT.idNote = @noteId;";
 
             DbParameter paramNoteId = cmdGetAllTags.CreateParameter();
             paramNoteId.ParameterName = "noteId";

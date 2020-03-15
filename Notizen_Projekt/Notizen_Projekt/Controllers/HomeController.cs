@@ -25,7 +25,7 @@ namespace Notizen_Projekt.Controllers
             notes = rep.GetAllNotes(currentUserLoggedIn);
             ViewBag.AllTags = rep.GetAllTags(currentUserLoggedIn.ID);
             rep.Close();
-            
+
             return View(notes);
         }
 
