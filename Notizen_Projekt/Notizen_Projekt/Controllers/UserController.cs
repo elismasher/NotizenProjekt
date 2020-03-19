@@ -20,6 +20,11 @@ namespace Notizen_Projekt.Controllers
 
         public ActionResult Login()
         {
+            if (Session["loggedinUser"] != null)
+            {
+                return RedirectToAction("index", "home");
+            }
+
             return View(new UserLogin());
         }
 
@@ -49,10 +54,15 @@ namespace Notizen_Projekt.Controllers
         {
             if (Session["loggedinUser"] != null)
             {
+
+                ViewBag.Name = ((User)Session["loggedinUser"]).Username;
+
                 Session["loggedinUser"] = null;
             }
 
-            return RedirectToAction("login", "user");
+            // Response.AddHeader("REFRESH", "5;URL=/User/Login");
+            
+            return View();
         }
 
         [HttpGet]
@@ -83,12 +93,12 @@ namespace Notizen_Projekt.Controllers
                 if (rep.Insert(user))
                 {
                     rep.Close();
-                    return View("Message", new Message("Registrierung", "Ihre Daten wurde erfolgreich abgespeichert!"));
+                    return RedirectToAction("login", "user");
                 }
                 else
                 {
                     rep.Close();
-                    return View("Message", new Message("Registrierung", "Ihre Daten konnten nicht abgespeichert werden!"));
+                    return RedirectToAction("registration", "user");
                 }
             }
         }

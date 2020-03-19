@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,7 +8,7 @@ namespace Notizen_Projekt.Models
 {
     public enum Status
     {
-        privateN, publicN, friendsN, notSpecified
+        privateN, publicN, friendsN
     }
 
     public enum ColourNote
@@ -17,9 +18,9 @@ namespace Notizen_Projekt.Models
 
     public class Note
     {
-        private string _user;
+        private User _user;
 
-        public string User
+        public User User
         {
             get { return this._user; }
             set
@@ -42,11 +43,11 @@ namespace Notizen_Projekt.Models
         public ColourNote ColourNote { get; set; }
         public int Id { get; set; }
 
-        public List<string> Tag { get; set; }
+        public List<Tag> Tag { get; set; }
 
-        public Note() : this("", "", "", DateTime.Now,DateTime.Now, Status.notSpecified, ColourNote.notSpecified, 0, new List<string>()) { }
+        public Note() : this(null, "", "", DateTime.Now,DateTime.Now, Status.privateN, ColourNote.notSpecified, 0, new List<Tag>()) { }
 
-        public Note(string user,string noteTitle, string noteText, DateTime dateWritten, DateTime dateLastEdit, Status status, ColourNote colourNote, int id, List<string> tag)
+        public Note(User user,string noteTitle, string noteText, DateTime dateWritten, DateTime dateLastEdit, Status status, ColourNote colourNote, int id, List<Tag> tag)
         {
             this.User = user;
             this.NoteTitle = noteTitle;

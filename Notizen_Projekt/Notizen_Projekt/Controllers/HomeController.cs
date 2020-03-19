@@ -5,20 +5,55 @@ using System.Web;
 using System.Web.Mvc;
 using Notizen_Projekt.Models;
 
+using Notizen_Projekt.Models.db;
+
 namespace Notizen_Projekt.Controllers
 {
     public class HomeController : Controller
     {
+        private IRepositoryNote rep;
+
+        [HttpGet]
         public ActionResult Index()
         {
-            List<Note> notes = new List<Note> {
-                new Note("Lukas","Hallo", "asdfjklöer",DateTime.Now,DateTime.Now,Status.publicN, ColourNote.blue, 100, new List<string>(){"Irgendwas" }),
-                new Note("Elias", "Überschrift", "Hier sollte der Text stehen!", new DateTime(2020,2,12), DateTime.Now, Status.privateN, ColourNote.green, 200, new List<string>(){"Hello","Tag"}),
-                new Note("Lukas","Spalte 3", "asdf jklö asdf jklö",new DateTime(2019,12,31),DateTime.Now,Status.friendsN, ColourNote.red, 300, new List<string>(){"Tag"}),
-                new Note("Lukas","abcdef", "Ich sollte in der Spalte 1 sein!",new DateTime(2012,10,14),new DateTime(2020,1,3),Status.privateN, ColourNote.yellow, 400, new List<string>(){"TagTag"}),
-                new Note("Lukas","efdsafs", "Hier Text!?",new DateTime(2012,10,14),new DateTime(2020,1,3),Status.publicN, ColourNote.notSpecified, 500, new List<string>(){"Tag","HTL"})
-            };
+            List<Note> notes; 
+            User currentUserLoggedIn;
+            currentUserLoggedIn = (User)Session["loggedinUser"];
+
+            rep = new RepositoryNote();
+            rep.Open();
+            notes = rep.GetAllNotes(currentUserLoggedIn);
+            ViewBag.AllTags = rep.GetAllTags(currentUserLoggedIn.ID);
+            rep.Close();
+
             return View(notes);
         }
+
+        [HttpPost]
+        public ActionResult Index(Note newNote, List<int> tags)
+        {
+            if (newNote == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(newNote);
+            }
+            else
+            {
+                rep = new RepositoryNote();
+
+                newNote.User = (User)Session["loggedinUser"];
+
+                rep.Open();
+                rep.Insert(newNote);
+                rep.AddTagsForNote(rep.GetLatestNoteId(), tags);
+                rep.Close();
+                return RedirectToAction("Index");
+            }
+        }
+
     }
 }

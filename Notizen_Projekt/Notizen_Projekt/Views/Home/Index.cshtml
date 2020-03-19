@@ -5,17 +5,65 @@
 }
 
 <div class="ui three column grid">
-    @foreach (var note in Model)
+    @if (Model != null)
     {
-        <div class="column">
-            @Html.Partial("Note", note)
-        </div>
+        foreach (var note in Model)
+        {
+            <div class="column">
+                @Html.Partial("Note", note)
+            </div>
+        }
     }
 </div>
 
-@foreach (var note in Model)
+@if (Model != null)
 {
-    @Html.Partial("NoteModal", note)
+    foreach (var note in Model)
+    {
+        @Html.Partial("NoteModal", note)
+    }
 }
+
+
+
+<div id="addNewNote" class="modal-window">
+    <div >
+
+    <a href="#" title="Close" class="modal-close">X</a>
+    <h1>Neue Notiz erstellen ...</h1>
+
+    <form action="/home/index" method="post" class="ui form">
+        <div class="field">
+            <label>Titel:</label>
+            <input type="text" name="NoteTitle" rows="1" maxlength="100" id="noteTitle" placeholder="Titel der Notiz ...">
+        </div>
+
+        <div class="field">
+            <label>Text:</label>
+            <textarea type="text" name="NoteText" rows="15" maxlength="1500" id="noteText" placeholder="Text der Notiz ..."></textarea>
+        </div>
+
+        <!--
+        <div class="bottomSection">
+             Tags -->
+        <!-- <div class="textBlock" id="left"> -->
+        <div class="field">
+            <label>Country</label>
+            <select name="tags" multiple="" class="ui dropdown">
+                @foreach (var tag in ViewBag.AllTags)
+                {
+                    <option value="@tag.ID">@tag.Name</option>
+                }
+            </select>
+        </div>
+        <!--<input type="color" value="#ff0000" />
+            </div>
+        </div>-->
+        <br />
+        <input type="submit" value="Notiz erstellen" class="ui submit button" />
+
+    </form>
+    </div>
+</div>
 
 

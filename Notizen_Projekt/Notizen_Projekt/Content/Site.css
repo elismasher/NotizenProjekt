@@ -161,3 +161,13 @@ main {
 .modal-close:hover {
     color: black;
 }
+
+
+
+/*--- Add Button ---*/
+.addButton {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 999999;
+}
