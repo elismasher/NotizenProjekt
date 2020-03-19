@@ -52,14 +52,18 @@
     <h5>Tags:</h5>
 
     <div class="sidenav">
-
-        @foreach (var a in Model)
+        @if (ViewBag.AllTags != null)
         {
-            foreach(var b in a.Tag)
+            foreach (var tag in ViewBag.AllTags)
             {
-                <p><i>@b.Name</i></p>
+                <p><i>@tag.Name</i></p>
             }
         }
+        else
+        {
+            <p>Keine Tags vorhanden</p>
+        }
+
     </div>
 
 </body>
