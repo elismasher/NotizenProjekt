@@ -1,30 +1,33 @@
-﻿
+﻿@model List<Notizen_Projekt.Models.Note>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        body {
+            font-family: "Lato", Arial;
+        }
 
         /* Fixed sidenav, full height */
         .sidenav {
             height: 100%;
-            width: 200px;
+            width: 240px;
             position: fixed;
-            z-index: auto;
-            top: auto;
-            left: auto;
+            z-index: 1;
+            left: 20px;
             overflow-x: hidden;
-            padding-top: 10px;
+            padding-top: 5px;
         }
 
             /* Style the sidenav links and the dropdown button */
             .sidenav a, .dropdown-btn {
-                padding: 6px 8px 6px 16px;
+                padding: 10px 8px 6px 16px;
                 text-decoration: none;
-                font-size: 10px;
+                font-size: 15px;
+                color: black;
                 display: block;
                 border: none;
                 background: none;
-                color: black;
                 width: 100%;
                 text-align: left;
                 cursor: pointer;
@@ -33,66 +36,31 @@
 
                 /* On mouse-over */
                 .sidenav a:hover, .dropdown-btn:hover {
-                    color: #0b38e7;
+                    color: blue;
                 }
 
         /* Main content */
         .main {
-            margin-left: 200px; /* Same as the width of the sidenav */
+            margin-left: 100px; /* Same as the width of the sidenav */
             font-size: 10px; /* Increased text to enable scrolling */
             padding: 0px 10px;
-        }
-
-        /* Add an active class to the active dropdown button */
-        .active {
-            color: black;
-        }
-
-        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-        .dropdown-container {
-            display: none;
-            padding-left: 8px;
-        }
-
-        /* Optional: Style the caret down icon */
-        .fa-caret-down {
-            float: right;
-            padding-right: 8px;
         }
     </style>
 </head>
 <body>
 
+    <h5>Tags:</h5>
+
     <div class="sidenav">
-        <button class="dropdown-btn">
-            Tags
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
-    </div>
 
-
-    <script>
-
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            });
+        @foreach (var a in Model)
+        {
+            foreach (string b in @a.Tag)
+            {
+                <p><i>@b</i></p>
+            }
         }
-    </script>
+    </div>
 
 </body>
 
