@@ -11,7 +11,7 @@ namespace Notizen_Projekt.Models.db
     public class RepositoryNote : IRepositoryNote
     {
         // hier eigenen Login verwenden (für Datenbank)
-        private string _connectionString = "Server=localhost; Database=db_NotizenProjekt; Uid=root; Pwd=Klexi2408;";
+        private string _connectionString = "Server=localhost; Database=db_NotizenProjekt; Uid=root; Pwd=formel1;";
         private MySqlConnection _connection;
 
         public void Open()
@@ -36,7 +36,7 @@ namespace Notizen_Projekt.Models.db
 
         public bool Insert(Note newNote)
         {
-            if(newNote == null)
+            if (newNote == null)
             {
                 return false;
             }
@@ -90,14 +90,13 @@ namespace Notizen_Projekt.Models.db
             paramNodeId.Value = nodeId;
             paramNodeId.DbType = DbType.Int32;
 
-
             DbParameter paramTagId = cmd.CreateParameter();
             paramTagId.ParameterName = "tagId";
             paramTagId.DbType = DbType.Int32;
 
             bool ret = true;
 
-            if(tags != null)
+            if (tags != null)
             {
                 foreach (var tag in tags)
                 {
@@ -110,7 +109,6 @@ namespace Notizen_Projekt.Models.db
                     ret = ret && cmd.ExecuteNonQuery() == 1;
                 }
             }
-            
 
             return ret;
         }
@@ -196,7 +194,6 @@ namespace Notizen_Projekt.Models.db
                 {
                     return null;
                 }
-
 
                 reader.Read();
                 return new Note

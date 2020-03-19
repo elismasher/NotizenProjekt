@@ -59,9 +59,10 @@ INSERT INTO users VALUES(null, "Test", "nachname", "test@test.at", 0, "Test", sh
 INSERT INTO notes(noteTitle, noteText, dateLastEdit, statusNote, colourNote, idUser) VALUES("Hi du Ei!", "!Ei du Hi", now(), 0, 2, 3);
 INSERT INTO tags VALUES(null, "Hondululu", 1);
 INSERT INTO tags VALUES(null, "Blah", 1);
-
+<<<<<<< HEAD
+=======
 INSERT INTO tags VALUES(null, "Blah", 2);
-
+>>>>>>> 26d94da83e92043b5eae4607866842146f33c951
 INSERT INTO NM_noteTag VALUES(1, 1);
 
 select * from NM_noteTag;

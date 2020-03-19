@@ -61,7 +61,6 @@ namespace Notizen_Projekt.Controllers
             }
 
             // Response.AddHeader("REFRESH", "5;URL=/User/Login");
-            
             return View();
         }
 
