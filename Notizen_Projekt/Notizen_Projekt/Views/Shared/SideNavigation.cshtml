@@ -55,9 +55,9 @@
 
         @foreach (var a in Model)
         {
-            foreach (string b in @a.Tag)
+            foreach(var b in a.Tag)
             {
-                <p><i>@b</i></p>
+                <p><i>@b.Name</i></p>
             }
         }
     </div>

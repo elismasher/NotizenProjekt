@@ -16,7 +16,7 @@ namespace Notizen_Projekt.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            List<Note> notes; 
+            List<Note> notes;
             User currentUserLoggedIn;
             currentUserLoggedIn = (User)Session["loggedinUser"];
 
