@@ -55,5 +55,23 @@ namespace Notizen_Projekt.Controllers
             }
         }
 
+        public ActionResult RemoveNote(int noteId)
+        {
+
+            if (Session["loggedInUser"] == null) // Überprüft ob ein User angemeldet ist
+            {
+                return RedirectToAction("Login", "User");
+            }
+
+            rep = new RepositoryNote();
+
+            rep.Open();
+            // Check User ob ihmn die Notiz wirklich gehört
+
+            rep.Delete(noteId);
+            rep.Close();
+            return RedirectToAction("Index");
+        }
+
     }
 }

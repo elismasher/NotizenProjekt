@@ -162,7 +162,9 @@ main {
     color: black;
 }
 
-
+.tagsSection{
+    text-align: left;
+}
 
 /*--- Add Button ---*/
 .addButton {
