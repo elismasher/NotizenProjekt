@@ -22,7 +22,7 @@ CREATE TABLE notes(
     dateWritten DATETIME default NOW(),
     dateLastEdit DATETIME,
     statusNote int,
-    colourNote int,
+    colourNote varchar(20),
     idUser int NOT NULL,
     
     constraint id_PK primary key(id),

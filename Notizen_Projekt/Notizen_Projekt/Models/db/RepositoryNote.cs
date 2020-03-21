@@ -62,7 +62,7 @@ namespace Notizen_Projekt.Models.db
             DbParameter paramColour = cmdInsert.CreateParameter();
             paramColour.ParameterName = "noteColour";
             paramColour.Value = newNote.ColourNote;
-            paramColour.DbType = DbType.Int32;
+            paramColour.DbType = DbType.String;
 
             DbParameter paramUserID = cmdInsert.CreateParameter();
             paramUserID.ParameterName = "userId";
@@ -161,7 +161,7 @@ namespace Notizen_Projekt.Models.db
                             DateWritten = Convert.ToDateTime(reader["dateWritten"]),
                             DateLastEdit = Convert.ToDateTime(reader["dateLastEdit"]),
                             Status = (Status)Convert.ToInt32(reader["statusNote"]),
-                            ColourNote = (ColourNote)Convert.ToInt32(reader["colourNote"]),
+                            ColourNote = Convert.ToString(reader["colourNote"]),
                             Id = Convert.ToInt32(reader["id"])
                         }
                     );
@@ -204,7 +204,7 @@ namespace Notizen_Projekt.Models.db
                     DateWritten = Convert.ToDateTime(reader["dateWritten"]),
                     DateLastEdit = Convert.ToDateTime(reader["dateLastEdit"]),
                     Status = (Status)Convert.ToInt32(reader["statusNote"]),
-                    ColourNote = (ColourNote)Convert.ToInt32(reader["colourNote"]),
+                    ColourNote = Convert.ToString(reader["colourNote"]),
                     Id = Convert.ToInt32(reader["id"])
                 };
             }

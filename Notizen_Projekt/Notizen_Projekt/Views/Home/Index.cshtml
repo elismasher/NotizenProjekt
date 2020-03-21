@@ -48,7 +48,7 @@
             <div class="textBlock" style="text-align: left;">
                 <div class="field">
                     <label>Tags</label>
-                    <select name="skills" multiple="" class="ui fluid dropdown" style="height: 70px;">
+                    <select name="tags" multiple="" class="ui fluid dropdown" style="height: 70px;">
                         @if (ViewBag.AllTags != null)
                         {
                             foreach (var tag in ViewBag.AllTags)
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="field">
-                    <input type="color" value="#ff0000" />
+                    <input name="ColourNote" type="color" value="#ff0000" />
                 </div>
                 
             </div>
