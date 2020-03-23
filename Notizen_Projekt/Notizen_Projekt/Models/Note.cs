@@ -39,7 +39,7 @@ namespace Notizen_Projekt.Models
 
         public List<Tag> Tag { get; set; }
 
-        public Note() : this(null, "", "", DateTime.Now,DateTime.Now, Status.privateN, "#d3d3d3", 0, new List<Tag>()) { }
+        public Note() : this(null, "", "", DateTime.Now,DateTime.Now, Status.privateN, "", 0, new List<Tag>()) { }
 
         public Note(User user,string noteTitle, string noteText, DateTime dateWritten, DateTime dateLastEdit, Status status, string colourNote, int id, List<Tag> tag)
         {

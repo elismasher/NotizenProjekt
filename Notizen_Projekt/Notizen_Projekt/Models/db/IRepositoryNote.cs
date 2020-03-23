@@ -21,5 +21,6 @@ namespace Notizen_Projekt.Models.db
 
         List<Tag> GetAllTags(int userId);
         List<Tag> GetAllTagsByNoteId(int noteId);
+        bool CheckUserIdToNoteId(int noteId, User user);
     }
 }

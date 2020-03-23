@@ -212,6 +212,8 @@ namespace Notizen_Projekt.Models.db
 
         public bool UpdateNoteData(int id, Note newNoteData)
         {
+            // Später Programmieren
+
             throw new NotImplementedException();
         }
 
@@ -286,6 +288,35 @@ namespace Notizen_Projekt.Models.db
             }
 
             return ret;
+        }
+
+        public bool CheckUserIdToNoteId(int noteId, User user)
+        {
+            int idNoteDB, idUserDB;
+
+            DbCommand cmd = _connection.CreateCommand();
+            cmd.CommandText = "SELECT idUser FROM notes WHERE id = @noteId";
+
+            DbParameter paramNoteId = cmd.CreateParameter();
+            paramNoteId.ParameterName = "noteId";
+            paramNoteId.Value = noteId;
+            paramNoteId.DbType = DbType.Int32;
+
+            cmd.Parameters.Add(paramNoteId);
+
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (!reader.HasRows)
+                {
+                    return false;
+                }
+
+                reader.Read();
+
+                idUserDB = Convert.ToInt32(reader["idUser"]);
+            }
+
+            return user.ID == idUserDB;
         }
     }
 }

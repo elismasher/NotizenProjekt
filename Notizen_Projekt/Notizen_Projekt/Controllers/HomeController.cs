@@ -55,9 +55,9 @@ namespace Notizen_Projekt.Controllers
             }
         }
 
+
         public ActionResult RemoveNote(int noteId)
         {
-
             if (Session["loggedInUser"] == null) // Überprüft ob ein User angemeldet ist
             {
                 return RedirectToAction("Login", "User");
@@ -66,12 +66,17 @@ namespace Notizen_Projekt.Controllers
             rep = new RepositoryNote();
 
             rep.Open();
-            // Check User ob ihmn die Notiz wirklich gehört
+
+            // Überprüft User ob ihmn die Notiz wirklich gehört
+            if (!rep.CheckUserIdToNoteId(noteId, (User)Session["loggedInUser"]))
+            {
+                TempData["message"] = "Sie sind nicht der Inhaber dieser Notiz somit wurde sie auch nicht entfernt!";
+                return RedirectToAction("Index");
+            }
 
             rep.Delete(noteId);
             rep.Close();
             return RedirectToAction("Index");
         }
-
     }
 }

@@ -73,3 +73,5 @@ select * from tags;
 SELECT * FROM notes n JOIN NM_noteTag nT ON n.id = nT.idNote JOIN tags t ON nT.idTag = t.id WHERE n.idUser = 3;
 
 SELECT * FROM tags t LEFT JOIN NM_noteTag nT ON t.id = nT.idTag WHERE nT.idNote = 1;
+
+

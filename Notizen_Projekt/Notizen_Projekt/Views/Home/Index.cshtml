@@ -27,54 +27,65 @@
 
 
 <div id="addNewNote" class="modal-window">
-    <div >
+    <div>
 
-    <a href="#" title="Close" class="modal-close">X</a>
-    <h1>Neue Notiz erstellen ...</h1>
+        <a href="#" title="Close" class="modal-close">X</a>
+        <h1>Neue Notiz erstellen ...</h1>
 
-    <form action="/home/index" method="post" class="ui form">
-        <div class="field">
-            <label>Titel:</label>
-            <input type="text" name="NoteTitle" rows="1" maxlength="100" id="noteTitle" placeholder="Titel der Notiz ...">
-        </div>
-
-        <div class="field">
-            <label>Text:</label>
-            <textarea type="text" required name="NoteText" rows="15" maxlength="1500" id="noteText" placeholder="Text der Notiz ..."></textarea>
-        </div>
-
-        
-        <div class="bottomSection">
-            <div class="textBlock" style="text-align: left;">
-                <div class="field">
-                    <label>Tags</label>
-                    <select name="tags" multiple="" class="ui fluid dropdown" style="height: 70px;">
-                        @if (ViewBag.AllTags != null)
-                        {
-                            foreach (var tag in ViewBag.AllTags)
-                            {
-                                <option value="@tag.ID">@tag.Name</option>
-                            }
-                        }
-                        else
-                        {
-                            <option value="">keine Tags vorhanden ...</option>
-                        }
-                    </select>
-                </div>
-
-                <div class="field">
-                    <input name="ColourNote" type="color" value="#ff0000" />
-                </div>
-                
+        <form action="/home/index" method="post" class="ui form">
+            <div class="field">
+                <label>Titel:</label>
+                <input type="text" name="NoteTitle" rows="1" maxlength="100" id="noteTitle" placeholder="Titel der Notiz ...">
             </div>
-        </div>
 
-        <div style="bottom: 0; float:right;">
-            <input type="submit" value="Notiz erstellen" class="ui submit button" />
-        </div>
-    </form>
+            <div class="field">
+                <label>Text:</label>
+                <textarea type="text" required name="NoteText" rows="15" maxlength="1500" id="noteText" placeholder="Text der Notiz ..."></textarea>
+            </div>
+
+
+            <div class="bottomSection">
+                <div class="textBlock" style="text-align: left;">
+                    <div class="field">
+                        <label>Tags</label>
+                        <select name="tags" multiple="" class="ui fluid dropdown" style="height: 70px;">
+                            @if (ViewBag.AllTags != null)
+                            {
+                                foreach (var tag in ViewBag.AllTags)
+                                {
+                                    <option value="@tag.ID">@tag.Name</option>
+                                }
+                            }
+                            else
+                            {
+                                <option value="">keine Tags vorhanden ...</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <input name="ColourNote" type="color" value="#d3d3d3" />
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="bottom: 0; float:right;">
+                <input type="submit" value="Notiz erstellen" class="ui submit button" />
+            </div>
+        </form>
     </div>
 </div>
+
+@if (TempData["message"] != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@TempData["message"]");
+            };
+    </script>
+
+}
 
 
