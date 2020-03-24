@@ -148,26 +148,29 @@ main {
     font-weight: bold;
 }
 
-.modal-window h1 {
+.modal-window #title {
     font-size: 150%;
+    font-weight: bold;
     margin: 0 0 15px;
 }
 
 .modal-close {
-    color: #aaa;
-    line-height: 50px;
-    font-size: 80%;
-    position: absolute;
-    right: 0;
-    text-align: center;
-    top: 0;
-    width: 70px;
+    font-size: 1.5em;
+    text-align: right;
     text-decoration: none;
-    margin-top: -0.5em;
-    margin-right: -0.5em;
+    margin-top: -10px;
+    margin-bottom: 15px;
 }
 
-.modal-close:hover {
+.modal-close button {
+    color: #aaa;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.modal-close button:hover {
+    cursor: pointer;
+    transition: .2s;
     color: black;
 }
 

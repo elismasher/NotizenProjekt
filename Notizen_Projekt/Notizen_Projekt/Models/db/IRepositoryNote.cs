@@ -14,7 +14,7 @@ namespace Notizen_Projekt.Models.db
         bool Insert(Note newNote);
         bool AddTagsForNote(int nodeId, List<int> tags);
         bool Delete(int id);
-        bool UpdateNoteData(int id, Note newNoteData);
+        bool UpdateNoteData(Note newNoteData);
         Note GetNote(int idNote);
         List<Note> GetAllNotes(User user);
         int GetLatestNoteId();

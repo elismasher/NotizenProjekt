@@ -70,11 +70,37 @@ namespace Notizen_Projekt.Controllers
             // Überprüft User ob ihmn die Notiz wirklich gehört
             if (!rep.CheckUserIdToNoteId(noteId, (User)Session["loggedInUser"]))
             {
+                rep.Close();
                 TempData["message"] = "Sie sind nicht der Inhaber dieser Notiz somit wurde sie auch nicht entfernt!";
                 return RedirectToAction("Index");
             }
 
             rep.Delete(noteId);
+            rep.Close();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult EditNote(Note updatedNote)
+        {
+            if (Session["loggedInUser"] == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
+
+            rep = new RepositoryNote();
+
+            rep.Open();
+
+            if (!rep.CheckUserIdToNoteId(updatedNote.Id, (User)Session["loggedInUser"]))
+            {
+                rep.Close();
+                TempData["message"] = "Sie sind nicht der Inhaber dieser Notiz somit kann sie auch nicht bearbeitet werden!";
+                return RedirectToAction("Index");
+            }
+
+            rep.UpdateNoteData(updatedNote);
             rep.Close();
             return RedirectToAction("Index");
         }

@@ -210,14 +210,14 @@ namespace Notizen_Projekt.Models.db
             }
         }
 
-        public bool UpdateNoteData(int id, Note newNoteData)
+        public bool UpdateNoteData(Note newNoteData)
         {
             DbCommand cmdUpdate = _connection.CreateCommand();
-            cmdUpdate.CommandText = "UPDATE notes(noteTitle, noteText, dateLastEdit, colourNote) SET noteTitle = @Title, noteText = @Text, dateLastEdit = now(), colourNote = @Colour WHERE id = @idNote;";
+            cmdUpdate.CommandText = "UPDATE notes SET noteTitle = @Title, noteText = @Text, dateLastEdit = now(), colourNote = @Colour WHERE id = @idNote;";
 
             DbParameter paramId = cmdUpdate.CreateParameter();
             paramId.ParameterName = "idNote";
-            paramId.Value = id;
+            paramId.Value = newNoteData.Id;
             paramId.DbType = DbType.Int32;
 
             DbParameter paramTitle = cmdUpdate.CreateParameter();
@@ -237,6 +237,7 @@ namespace Notizen_Projekt.Models.db
 
             cmdUpdate.Parameters.Add(paramTitle);
             cmdUpdate.Parameters.Add(paramText);
+            cmdUpdate.Parameters.Add(paramId);
             cmdUpdate.Parameters.Add(paramColour);
 
             return cmdUpdate.ExecuteNonQuery() == 1;

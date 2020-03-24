@@ -4,47 +4,73 @@
 
     <div id="@Model.User.Username@Model.Id" class="modal-window">
         <div style="border-color: @Model.ColourNote">
-            <a href="#" title="Close" class="modal-close">X</a>
-            <h1>@Model.NoteTitle</h1>
-            <div>@Model.NoteText</div>
-            
-            <br />
+            <form class="ui form" action="/home/editNote" method="post">
 
-            <div class="bottomSection">
-                <!-- Tags -->
+                <div class="modal-close" style="text-align:right;">
+                    <button type="submit" title="Fenster schließen"><i class="close alternate icon"></i></button>
+                </div>
 
-                @if (Model.Tag != null)
-                {
-                    <div class="tagsSection">
-                        <p>
-                            Tags:
-                            @foreach (var tag in Model.Tag)
-                            {
-                                <b>@tag.Name ,</b>
-                            }
-                        </p>
+                @Html.HiddenFor(n => n.Id)
+
+                <div class="field">
+                    @Html.TextBoxFor(n => n.NoteTitle, new { type = "text", name = "NoteTitle", title = "Notizen Titel", @id = "title" })
+                </div>
+                <div class="field">
+                    @Html.TextAreaFor(n => n.NoteText, new { type = "text", name = "NoteText", rows = "13", title = "Notizen Text", required = "required" })
+                </div>
+
+                <br />
+
+                <div class="bottomSection">
+                    <!-- Tags -->
+
+                    @if (Model.Tag.Count != 0)
+                    {
+                        <div class="tagsSection">
+                            <div style="float:left;">
+                                <p>Tags:</p>
+                            </div>
+
+                            <div style="float:left; margin-left:10px;">
+                                @foreach (var tag in Model.Tag)
+                                {
+                                    <b>@tag.Name ,</b>
+                                }
+                            </div>
+                        </div>
+
+                        <div id="right" style="margin-top:0px; margin-bottom: 10px;">
+                            <a href="#edit-modal" title="Tags bearbeiten"><i class="pencil alternate icon"></i></a>
+                        </div>
+                    }
+
+                    <div class="field" style="text-align:left;">
+                        <div style="float:left;">
+                            <p>Farbe:</p>
+                        </div>
+                        <div style="float:left; margin-left:10px;">
+                            <input name="ColourNote" type="color" title="Notizen Farbe" value="@Model.ColourNote" />
+                        </div>
                     </div>
-                }
 
-                <!--Edit-->
-                <div class="textBlock" id="right">
-                    <a href="#edit-modal"><i class="pencil alternate icon"></i></a>
-                </div>
-                <!--Delete-->
-                <div class="textBlock" id="right">
-                    <a href="/home/removenote?noteId=@Model.Id"><i class="trash alternate icon"></i></a>
-                </div>
-                <!--User-->
-                <div class="textBlock" id="right">
-                    <p>@Model.User.Username</p>
-                </div>
+                    <div style="clear:both; margin-top:30px;">
+                        <!--Delete-->
+                        <div class="textBlock" id="right">
+                            <a href="/home/removenote?noteId=@Model.Id"><i class="trash alternate icon"></i></a>
+                        </div>
+                        <!--User-->
+                        <div class="textBlock" id="right">
+                            <p>@Model.User.Username</p>
+                        </div>
 
-                <!-- Date -->
-                <div class="textBlock" id="left">
-                    <p>@Model.DateWritten</p>
-                </div>
+                        <!-- Date -->
+                        <div class="textBlock" id="left" style="margin-left:0px">
+                            <p>@Model.DateLastEdit</p>
+                        </div>
+                    </div>
 
 
-            </div>    
+                </div>
+            </form>
         </div>
     </div>
