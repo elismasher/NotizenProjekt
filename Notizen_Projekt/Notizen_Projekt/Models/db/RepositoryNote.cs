@@ -212,9 +212,34 @@ namespace Notizen_Projekt.Models.db
 
         public bool UpdateNoteData(int id, Note newNoteData)
         {
-            // Später Programmieren
+            DbCommand cmdUpdate = _connection.CreateCommand();
+            cmdUpdate.CommandText = "UPDATE notes(noteTitle, noteText, dateLastEdit, colourNote) SET noteTitle = @Title, noteText = @Text, dateLastEdit = now(), colourNote = @Colour WHERE id = @idNote;";
 
-            throw new NotImplementedException();
+            DbParameter paramId = cmdUpdate.CreateParameter();
+            paramId.ParameterName = "idNote";
+            paramId.Value = id;
+            paramId.DbType = DbType.Int32;
+
+            DbParameter paramTitle = cmdUpdate.CreateParameter();
+            paramTitle.ParameterName = "Title";
+            paramTitle.Value = newNoteData.NoteTitle;
+            paramTitle.DbType = DbType.String;
+
+            DbParameter paramText = cmdUpdate.CreateParameter();
+            paramText.ParameterName = "Text";
+            paramText.Value = newNoteData.NoteText;
+            paramText.DbType = DbType.String;
+
+            DbParameter paramColour = cmdUpdate.CreateParameter();
+            paramColour.ParameterName = "Colour";
+            paramColour.Value = newNoteData.ColourNote;
+            paramColour.DbType = DbType.String;
+
+            cmdUpdate.Parameters.Add(paramTitle);
+            cmdUpdate.Parameters.Add(paramText);
+            cmdUpdate.Parameters.Add(paramColour);
+
+            return cmdUpdate.ExecuteNonQuery() == 1;
         }
 
         public List<Tag> GetAllTags(int userId)
@@ -292,7 +317,7 @@ namespace Notizen_Projekt.Models.db
 
         public bool CheckUserIdToNoteId(int noteId, User user)
         {
-            int idNoteDB, idUserDB;
+            int idUserDB;
 
             DbCommand cmd = _connection.CreateCommand();
             cmd.CommandText = "SELECT idUser FROM notes WHERE id = @noteId";

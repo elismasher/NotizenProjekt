@@ -75,3 +75,4 @@ SELECT * FROM notes n JOIN NM_noteTag nT ON n.id = nT.idNote JOIN tags t ON nT.i
 SELECT * FROM tags t LEFT JOIN NM_noteTag nT ON t.id = nT.idTag WHERE nT.idNote = 1;
 
 
+-
