@@ -76,9 +76,9 @@ main {
     border-color: lightgrey;
 }
 
-.noteBlock:hover {
-    background-color: #fafafa;
-}
+    .noteBlock:hover {
+        background-color: #f5f5f5;
+    }
 
 .bottomSection {
     margin-top: 1em;
