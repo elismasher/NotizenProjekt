@@ -22,7 +22,7 @@ CREATE TABLE notes(
     dateWritten DATETIME default NOW(),
     dateLastEdit DATETIME,
     statusNote int,
-    colourNote int,
+    colourNote varchar(20),
     idUser int NOT NULL,
     
     constraint id_PK primary key(id),
@@ -73,3 +73,6 @@ select * from tags;
 SELECT * FROM notes n JOIN NM_noteTag nT ON n.id = nT.idNote JOIN tags t ON nT.idTag = t.id WHERE n.idUser = 3;
 
 SELECT * FROM tags t LEFT JOIN NM_noteTag nT ON t.id = nT.idTag WHERE nT.idNote = 1;
+
+
+-

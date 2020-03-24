@@ -10,29 +10,40 @@
             <br />
 
             <div class="bottomSection">
+                <!-- Tags -->
+
+                @if (Model.Tag != null)
+                {
+                    <div class="tagsSection">
+                        <p>
+                            Tags:
+                            @foreach (var tag in Model.Tag)
+                            {
+                                <b>@tag.Name ,</b>
+                            }
+                        </p>
+                    </div>
+                }
+
                 <!--Edit-->
                 <div class="textBlock" id="right">
                     <a href="#edit-modal"><i class="pencil alternate icon"></i></a>
+                </div>
+                <!--Delete-->
+                <div class="textBlock" id="right">
+                    <a href="/home/removenote?noteId=@Model.Id"><i class="trash alternate icon"></i></a>
                 </div>
                 <!--User-->
                 <div class="textBlock" id="right">
                     <p>@Model.User.Username</p>
                 </div>
+
                 <!-- Date -->
                 <div class="textBlock" id="left">
                     <p>@Model.DateWritten</p>
                 </div>
-                <!-- Tags -->
-                
-                <div class="textBlock" id="left">
-                    <p>
-                        Tags:
-                        @foreach (var tag in Model.Tag)
-                        {
-                            <b>@tag.Name ,</b>
-                        }
-                    </p>
-                </div>
+
+
             </div>    
         </div>
     </div>

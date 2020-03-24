@@ -76,6 +76,10 @@ main {
     border-color: lightgrey;
 }
 
+.noteBlock:hover {
+    background-color: #fafafa;
+}
+
 .bottomSection {
     margin-top: 1em;
     padding: 0.8em 0.3em;
@@ -98,6 +102,13 @@ main {
 }
 
 /*Modal*/
+.nodeLink{
+    color: inherit;
+}
+.nodeLink:hover {
+    color: inherit;
+}
+
 .modal-window {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.25);
@@ -110,8 +121,6 @@ main {
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s;
-
-
 }
 
 .modal-window:target {
@@ -162,12 +171,20 @@ main {
     color: black;
 }
 
-
+.tagsSection{
+    text-align: left;
+}
 
 /*--- Add Button ---*/
 .addButton {
     position: fixed;
-    bottom: 15px;
-    right: 15px;
+    bottom: 30px;
+    right: 30px;
     z-index: 999999;
 }
+
+.addButton button{
+    height: 45px;
+    width: 45px;
+}
+

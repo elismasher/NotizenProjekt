@@ -62,7 +62,7 @@ namespace Notizen_Projekt.Models.db
             DbParameter paramColour = cmdInsert.CreateParameter();
             paramColour.ParameterName = "noteColour";
             paramColour.Value = newNote.ColourNote;
-            paramColour.DbType = DbType.Int32;
+            paramColour.DbType = DbType.String;
 
             DbParameter paramUserID = cmdInsert.CreateParameter();
             paramUserID.ParameterName = "userId";
@@ -161,7 +161,7 @@ namespace Notizen_Projekt.Models.db
                             DateWritten = Convert.ToDateTime(reader["dateWritten"]),
                             DateLastEdit = Convert.ToDateTime(reader["dateLastEdit"]),
                             Status = (Status)Convert.ToInt32(reader["statusNote"]),
-                            ColourNote = (ColourNote)Convert.ToInt32(reader["colourNote"]),
+                            ColourNote = Convert.ToString(reader["colourNote"]),
                             Id = Convert.ToInt32(reader["id"])
                         }
                     );
@@ -204,7 +204,7 @@ namespace Notizen_Projekt.Models.db
                     DateWritten = Convert.ToDateTime(reader["dateWritten"]),
                     DateLastEdit = Convert.ToDateTime(reader["dateLastEdit"]),
                     Status = (Status)Convert.ToInt32(reader["statusNote"]),
-                    ColourNote = (ColourNote)Convert.ToInt32(reader["colourNote"]),
+                    ColourNote = Convert.ToString(reader["colourNote"]),
                     Id = Convert.ToInt32(reader["id"])
                 };
             }
@@ -212,7 +212,34 @@ namespace Notizen_Projekt.Models.db
 
         public bool UpdateNoteData(int id, Note newNoteData)
         {
-            throw new NotImplementedException();
+            DbCommand cmdUpdate = _connection.CreateCommand();
+            cmdUpdate.CommandText = "UPDATE notes(noteTitle, noteText, dateLastEdit, colourNote) SET noteTitle = @Title, noteText = @Text, dateLastEdit = now(), colourNote = @Colour WHERE id = @idNote;";
+
+            DbParameter paramId = cmdUpdate.CreateParameter();
+            paramId.ParameterName = "idNote";
+            paramId.Value = id;
+            paramId.DbType = DbType.Int32;
+
+            DbParameter paramTitle = cmdUpdate.CreateParameter();
+            paramTitle.ParameterName = "Title";
+            paramTitle.Value = newNoteData.NoteTitle;
+            paramTitle.DbType = DbType.String;
+
+            DbParameter paramText = cmdUpdate.CreateParameter();
+            paramText.ParameterName = "Text";
+            paramText.Value = newNoteData.NoteText;
+            paramText.DbType = DbType.String;
+
+            DbParameter paramColour = cmdUpdate.CreateParameter();
+            paramColour.ParameterName = "Colour";
+            paramColour.Value = newNoteData.ColourNote;
+            paramColour.DbType = DbType.String;
+
+            cmdUpdate.Parameters.Add(paramTitle);
+            cmdUpdate.Parameters.Add(paramText);
+            cmdUpdate.Parameters.Add(paramColour);
+
+            return cmdUpdate.ExecuteNonQuery() == 1;
         }
 
         public List<Tag> GetAllTags(int userId)
@@ -286,6 +313,35 @@ namespace Notizen_Projekt.Models.db
             }
 
             return ret;
+        }
+
+        public bool CheckUserIdToNoteId(int noteId, User user)
+        {
+            int idUserDB;
+
+            DbCommand cmd = _connection.CreateCommand();
+            cmd.CommandText = "SELECT idUser FROM notes WHERE id = @noteId";
+
+            DbParameter paramNoteId = cmd.CreateParameter();
+            paramNoteId.ParameterName = "noteId";
+            paramNoteId.Value = noteId;
+            paramNoteId.DbType = DbType.Int32;
+
+            cmd.Parameters.Add(paramNoteId);
+
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (!reader.HasRows)
+                {
+                    return false;
+                }
+
+                reader.Read();
+
+                idUserDB = Convert.ToInt32(reader["idUser"]);
+            }
+
+            return user.ID == idUserDB;
         }
     }
 }
