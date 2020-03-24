@@ -1,25 +1,27 @@
 ﻿@model Notizen_Projekt.Models.Note
-    <a class="nodeLink" href="#@Model.User.Username@Model.Id">
-        <div class="noteBlock" style="border-color: @Model.ColourNote">
-            <h3>@Model.NoteTitle</h3>
-            <p>@Model.NoteText</p>
 
-            <div class="bottomSection">
-                <!--View-->
-                <div class="textBlock" id="right">
-                    <a href="#@Model.User.Username@Model.Id"><i class="search plus icon"></i></a>
-                </div>
-                <!--User-->
-                <div class="textBlock" id="right">
-                    <p>@Model.User.Username</p>
-                </div>
+<a class="nodeLink" href="#@Model.User.Username@Model.Id">
+    <div class="noteBlock" style="border-color: @Model.ColourNote">
+        <!-- Titel -->
+        <h3>@Model.NoteTitle</h3>
+        <!-- Text -->
+        <p>@Model.NoteText</p>
 
-                <!-- Date -->
-                <div class="textBlock" id="left">
-                    <p>@Model.DateWritten</p>
-                </div>
+        <div class="bottomSection">
+            <!-- Modal öffnen -->
+            <div class="textBlock right">
+                <a href="#@Model.User.Username@Model.Id"><i class="search plus icon"></i></a>
+            </div>
+            <!-- User -->
+            <div class="textBlock right">
+                <p>@Model.User.Username</p>
+            </div>
+            <!-- Datum erstellt -->
+            <div class="textBlock left">
+                <p>@Model.DateWritten</p>
             </div>
         </div>
-    </a>
+    </div>
+</a>
 
 

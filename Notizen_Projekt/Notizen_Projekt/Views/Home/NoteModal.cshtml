@@ -1,76 +1,79 @@
 ﻿@model Notizen_Projekt.Models.Note
 
-<!-- Wird bearbeitet-->
+<div id="@Model.User.Username@Model.Id" class="modal-window">
+    <div id="borderColourModal_@Model.Id" style="border-color: @Model.ColourNote">
 
-    <div id="@Model.User.Username@Model.Id" class="modal-window">
-        <div style="border-color: @Model.ColourNote">
-            <form class="ui form" action="/home/editNote" method="post">
+        <form class="ui form" action="/home/editNote" method="post">
+            <!-- Fenster schließen -->
+            <div class="modal-close" style="text-align:right;">
+                <button type="submit" title="Fenster schließen"><i class="close alternate icon"></i></button>
+            </div>
+            <!-- Id -->
+            @Html.HiddenFor(n => n.Id, new { @id="" })
 
-                <div class="modal-close" style="text-align:right;">
-                    <button type="submit" title="Fenster schließen"><i class="close alternate icon"></i></button>
-                </div>
+            <!-- Titel -->
+            <div class="field">
+                @Html.TextBoxFor(n => n.NoteTitle, new { type = "text", name = "NoteTitle", title = "Notizen Titel", maxlength="100", @class = "title", @id="" })
+            </div>
+            <!-- Text -->
+            <div class="field">
+                @Html.TextAreaFor(n => n.NoteText, new { type = "text", name = "NoteText", rows = "13", title = "Notizen Text", maxlength="1500", required = "required", @id="" })
+            </div>
 
-                @Html.HiddenFor(n => n.Id)
+            <br />
 
-                <div class="field">
-                    @Html.TextBoxFor(n => n.NoteTitle, new { type = "text", name = "NoteTitle", title = "Notizen Titel", @id = "title" })
-                </div>
-                <div class="field">
-                    @Html.TextAreaFor(n => n.NoteText, new { type = "text", name = "NoteText", rows = "13", title = "Notizen Text", required = "required" })
-                </div>
-
-                <br />
-
-                <div class="bottomSection">
-                    <!-- Tags -->
-
-                    @if (Model.Tag.Count != 0)
-                    {
-                        <div class="tagsSection">
-                            <div style="float:left;">
-                                <p>Tags:</p>
-                            </div>
-
-                            <div style="float:left; margin-left:10px;">
-                                @foreach (var tag in Model.Tag)
-                                {
-                                    <b>@tag.Name ,</b>
-                                }
-                            </div>
+            <div class="bottomSection">
+                <!-- Tags -->
+                @if (Model.Tag.Count != 0)
+                {
+                    <div class="tagsSection">
+                        <div class="left">
+                            <p>Tags:</p>
                         </div>
 
-                        <div id="right" style="margin-top:0px; margin-bottom: 10px;">
-                            <a href="#edit-modal" title="Tags bearbeiten"><i class="pencil alternate icon"></i></a>
-                        </div>
-                    }
-
-                    <div class="field" style="text-align:left;">
-                        <div style="float:left;">
-                            <p>Farbe:</p>
-                        </div>
-                        <div style="float:left; margin-left:10px;">
-                            <input name="ColourNote" type="color" title="Notizen Farbe" value="@Model.ColourNote" />
+                        <div class="leftAndMargin10">
+                            @foreach (var tag in Model.Tag)
+                            {
+                                <b>@tag.Name ,</b>
+                            }
                         </div>
                     </div>
 
-                    <div style="clear:both; margin-top:30px;">
-                        <!--Delete-->
-                        <div class="textBlock" id="right">
-                            <a href="/home/removenote?noteId=@Model.Id"><i class="trash alternate icon"></i></a>
-                        </div>
-                        <!--User-->
-                        <div class="textBlock" id="right">
-                            <p>@Model.User.Username</p>
-                        </div>
+                    <div class="right editModalIcon">
+                        <a href="#edit-modal" title="Tags bearbeiten"><i class="pencil alternate icon"></i></a>
+                    </div>
+                }
 
-                        <!-- Date -->
-                        <div class="textBlock" id="left" style="margin-left:0px">
-                            <p>@Model.DateLastEdit</p>
-                        </div>
+                <!-- Farbe -->
+                <div class="field leftText">
+                    <div class="left">
+                        <p>Farbe:</p>
                     </div>
 
-
+                    <div class="leftAndMargin10">
+                        <input name="ColourNote" type="color" title="Notizen Farbe" onchange="setBorderColour('@Model.Id');" id="inputColour_@Model.Id" value="@Model.ColourNote" />
+                    </div>
                 </div>
-            </form>
-        </div>
+
+                <div class="lastRowModal">
+                    <!--Delete-->
+                    <div class="textBlock right">
+                        <a href="/home/removenote?noteId=@Model.Id"><i class="trash alternate icon"></i></a>
+                    </div>
+
+                    <!--User-->
+                    <div class="textBlock right">
+                        <p>@Model.User.Username</p>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="textBlock left" style="margin-left:0px">
+                        <p>@Model.DateLastEdit</p>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
+</div>
+
+    

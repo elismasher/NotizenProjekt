@@ -4,6 +4,7 @@
     ViewBag.Title = "Home Page";
 }
 
+<!-- Notizen anzeigen lassen -->
 <div class="ui three column grid">
     @if (Model != null)
     {
@@ -16,6 +17,7 @@
     }
 </div>
 
+<!-- Modals zu jeder Notiz erstellen -->
 @if (Model != null)
 {
     foreach (var note in Model)
@@ -24,31 +26,35 @@
     }
 }
 
-
-
+<!-- neue Notiz -->
 <div id="addNewNote" class="modal-window">
     <div>
+        <div class="modal-close" style="margin-bottom: -30px;">
+            <button type="button" onclick="window.location.href = '/home/index';" title="Fenster schließen"><i class="close alternate icon"></i></button>
+        </div>
 
-        <a href="#" title="Close" class="modal-close">X</a>
         <h1>Neue Notiz erstellen ...</h1>
 
+        <br />
+
         <form action="/home/index" method="post" class="ui form">
+            <!-- Titel -->
             <div class="field">
                 <label>Titel:</label>
-                <input type="text" name="NoteTitle" rows="1" maxlength="100" id="noteTitle" placeholder="Titel der Notiz ...">
+                <input type="text" name="NoteTitle" rows="1" maxlength="100" placeholder="Titel der Notiz ...">
             </div>
-
+            <!-- Text -->
             <div class="field">
                 <label>Text:</label>
-                <textarea type="text" required name="NoteText" rows="15" maxlength="1500" id="noteText" placeholder="Text der Notiz ..."></textarea>
+                <textarea type="text" required name="NoteText" rows="15" maxlength="1500" placeholder="Text der Notiz ..."></textarea>
             </div>
 
-
             <div class="bottomSection">
-                <div class="textBlock" style="text-align: left;">
+                <div class="textBlock leftText">
+                    <!-- Tags -->
                     <div class="field">
-                        <label>Tags</label>
-                        <select name="tags" multiple="" class="ui fluid dropdown" style="height: 70px;">
+                        <label>Tags:</label>
+                        <select name="tags" multiple="" class="ui fluid dropdown" title="Strg halten um somit mehrere Tags auszuwählen" style="height: 70px;">
                             @if (ViewBag.AllTags != null)
                             {
                                 foreach (var tag in ViewBag.AllTags)
@@ -62,30 +68,21 @@
                             }
                         </select>
                     </div>
-
+                    <!-- Farbe -->
                     <div class="field">
+                        <label>Farbe:</label>
                         <input name="ColourNote" type="color" value="#d3d3d3" />
                     </div>
-
                 </div>
             </div>
-
-            <div style="bottom: 0; float:right;">
+            <!-- Bestätigungs Button -->
+            <div class="right" style="bottom: 0;">
                 <input type="submit" value="Notiz erstellen" class="ui submit button" />
             </div>
         </form>
     </div>
 </div>
 
-@if (TempData["message"] != null)
-{
-    <script type="text/javascript">
 
-            window.onload = function () {
-                alert("@TempData["message"]");
-            };
-    </script>
-
-}
 
 

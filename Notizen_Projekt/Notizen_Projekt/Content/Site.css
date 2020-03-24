@@ -43,10 +43,10 @@
     padding-left: 30px;
 }
 
-#gridItem {
-    margin: 0;
-    margin-top: 14px;
-    padding: 0;
+.gridItem {
+    margin: 0 !important;
+    margin-top: 14px !important;
+    padding: 0 !important;
 }
 
 #fullHeight {
@@ -89,12 +89,20 @@ main {
     text-align: right;
 }
 
-#right {
-    float: right;
+.right {
+    float: right !important;
 }
 
-#left {
-    float: left;
+.left {
+    float: left !important;
+}
+
+.leftText{
+    text-align: left;
+}
+
+.rightText {
+    text-align: right;
 }
 
 .textBlock {
@@ -148,8 +156,8 @@ main {
     font-weight: bold;
 }
 
-.modal-window #title {
-    font-size: 150%;
+.modal-window .title {
+    font-size: 1.5em!important;
     font-weight: bold;
     margin: 0 0 15px;
 }
@@ -178,6 +186,21 @@ main {
     text-align: left;
 }
 
+.editModalIcon {
+    margin-top:0px;
+    margin-bottom: 10px;
+}
+
+.leftAndMargin10 {
+    float: left;
+    margin-left: 10px;
+}
+
+.lastRowModal {
+    clear:both;
+    margin-top:30px;
+}
+
 /*--- Add Button ---*/
 .addButton {
     position: fixed;
@@ -191,3 +214,38 @@ main {
     width: 45px;
 }
 
+
+/* Side Navigation */
+.sidenav {
+    height: 100%;
+    width: 240px;
+    position: fixed;
+    z-index: 1;
+    left: 20px;
+    overflow-x: hidden;
+    padding-top: 5px;
+}
+
+.sidenav a, .dropdown-btn {
+                padding: 10px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 15px;
+                color: black;
+                display: block;
+                border: none;
+                background: none;
+                width: 100%;
+                text-align: left;
+                cursor: pointer;
+                outline: none;
+}
+
+.sidenav a:hover, .dropdown-btn:hover {
+    color: blue;
+}
+
+.main {
+    margin-left: 100px;
+    font-size: 10px;
+    padding: 0px 10px;
+}
