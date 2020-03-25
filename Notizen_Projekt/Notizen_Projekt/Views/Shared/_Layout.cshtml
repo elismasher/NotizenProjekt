@@ -49,9 +49,17 @@
 
     <script>
 
-        function setBorderColour(id) {
+        function setBorderColourModal(id) {
             var inputElementIdName = "#inputColour_" + id;
             var borderElementIdName = "#borderColourModal_" + id;
+
+            var inputVal = $(inputElementIdName).val();
+            $(borderElementIdName).css("border-color", inputVal);
+        }
+
+        function setBorderColourNewNote(id) {
+            var inputElementIdName = "#inputColourNewNote";
+            var borderElementIdName = "#borderColourNewNote";
 
             var inputVal = $(inputElementIdName).val();
             $(borderElementIdName).css("border-color", inputVal);

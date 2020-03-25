@@ -28,7 +28,7 @@
 
 <!-- neue Notiz -->
 <div id="addNewNote" class="modal-window">
-    <div>
+    <div id="borderColourNewNote">
         <div class="modal-close" style="margin-bottom: -30px;">
             <button type="button" onclick="window.location.href = '/home/index';" title="Fenster schließen"><i class="close alternate icon"></i></button>
         </div>
@@ -71,7 +71,7 @@
                     <!-- Farbe -->
                     <div class="field">
                         <label>Farbe:</label>
-                        <input name="ColourNote" type="color" value="#d3d3d3" />
+                        <input name="ColourNote" type="color" title="Notizen Farbe" onchange="setBorderColourNewNote();" id="inputColourNewNote" value="#d3d3d3" />
                     </div>
                 </div>
             </div>
