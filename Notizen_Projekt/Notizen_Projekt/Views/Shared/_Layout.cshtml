@@ -56,6 +56,21 @@
             var inputVal = $(inputElementIdName).val();
             $(borderElementIdName).css("border-color", inputVal);
         }
+
+        function searchNote(){
+            var input = document.getElementById("searchForNote");
+            var filter = input.value.toLowerCase();
+            var nodes = document.getElementsByClassName('nodeLink');
+
+            for (i = 0; i < nodes.length; i++) {
+                if (nodes[i].innerText.toLowerCase().includes(filter)) {
+                    nodes[i].style.display = "block";
+                }
+                else {
+                    nodes[i].style.display = "none";
+                }
+            }
+        }
     </script>
 
 
